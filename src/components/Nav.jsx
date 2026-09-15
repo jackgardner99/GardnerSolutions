@@ -6,10 +6,17 @@ export default function Nav() {
   const { pathname } = useLocation();
   const onAbout = pathname === "/about";
 
+  const handleBrandClick = (e) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
+  };
+
   return (
     <nav>
       <div className="wrap nav-in">
-        <Link to="/" className="brand">
+        <Link to="/" className="brand" onClick={handleBrandClick}>
           <BrandMark />
           Gardner&nbsp;Solutions
         </Link>
