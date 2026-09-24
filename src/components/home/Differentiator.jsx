@@ -9,13 +9,13 @@ export default function Differentiator() {
           <h2>We're not a social media company.</h2>
           <p>
             Posting is a band-aid. Chasing followers and trends can pull a brand away from its story and
-            bring in customers who don't stick around — and an inflated following can quietly hurt the
+            bring in customers who don't stick around, and an inflated following can quietly hurt the
             engagement it looks like it's helping.
           </p>
           <p>
             We do the deeper work first: find the seed of why you started, get that message right, and let
             it grow through every part of your business, so your team knows the brand as well as you do.
-            When social media genuinely fits your goals, we'll tend it too — right down to the photography,
+            When social media genuinely fits your goals, we'll tend it too, right down to the photography,
             video, and posting.
           </p>
         </div>

@@ -33,7 +33,7 @@ export default function Contact() {
         <div className="sec-head">
           <span className="eyebrow" style={{ color: "var(--rose)" }}>Get in touch</span>
           <h2>Book your free assessment.</h2>
-          <p>Tell us a little about your business and we'll map your garden together — then tend the areas that will grow you fastest. No cost, no obligation.</p>
+          <p>Tell us a little about your business and we'll map your garden together, then tend the areas that will grow you fastest. No cost, no obligation.</p>
         </div>
         <form className="cform" ref={formRef} onSubmit={handleSubmit}>
           <div className="cfield"><label>Your name</label><input type="text" name="name" placeholder="Jane Smith" required /></div>
@@ -47,12 +47,12 @@ export default function Contact() {
           </button>
           {status === "sent" && (
             <p style={{ marginTop: 14, color: "var(--moss)", fontWeight: 700, textAlign: "center" }}>
-              🌱 Thanks — your request is in. We'll be in touch soon.
+              🌱 Thanks, your request is in. We'll be in touch soon.
             </p>
           )}
           {status === "error" && (
             <p style={{ marginTop: 14, color: "var(--rose)", fontWeight: 700, textAlign: "center" }}>
-              Something went wrong sending that — mind trying again?
+              Something went wrong sending that. Mind trying again?
             </p>
           )}
         </form>

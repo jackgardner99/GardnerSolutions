@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { PILLARS, TIERS, SCORE } from "../../data/pillars.js";
 import Plant from "../Plant.jsx";
-import { scrollToId } from "../../utils/scrollTo.js";
 
 export default function Assessment() {
   const [answers, setAnswers] = useState(() => PILLARS.map((p) => p.state));
@@ -27,7 +26,7 @@ export default function Assessment() {
 
   const lows = PILLARS.filter((_, i) => tierOf(i) === "Low").map((p) => p.name);
   const strengths = PILLARS.filter((_, i) => tierOf(i) === "High").map((p) => p.name);
-  let readout = `Averaging ${avg.toFixed(1)} of 5 across eight areas. `;
+  let readout = `Averaging ${avg.toFixed(1)} of 5 across ${PILLARS.length} areas. `;
   if (strengths.length) readout += `Blooming already in ${strengths.join(", ")}. `;
   if (lows.length) readout += `The biggest room to grow: ${lows.slice(0, 3).join(", ")}${lows.length > 3 ? ", and more" : ""}.`;
 
@@ -39,10 +38,10 @@ export default function Assessment() {
             <span className="eyebrow">A taste of the assessment</span>
             <h2>Where are you growing?</h2>
             <p>
-              This is a quick <b>sample</b> — one question per area, pre-filled with an example wellness
+              This is a quick <b>sample</b>; one question per area, pre-filled with an example wellness
               shop, <b>Willow &amp; Sage</b>. Change any answer and watch the garden shift. The real
-              assessment we run <b>with you</b> goes deeper across all 43 sub-areas and is built entirely
-              around your business — <a href="#contact" style={{ color: "var(--moss)", fontWeight: 700 }}>book yours free →</a>
+              assessment we run <b>with you</b> goes deeper across all 57 sub-areas and is built entirely
+              around your business. <a href="#contact" style={{ color: "var(--moss)", fontWeight: 700 }}>Book yours free →</a>
             </p>
           </div>
           <div className="qgrid">
@@ -69,7 +68,7 @@ export default function Assessment() {
             ))}
           </div>
           <div className="quiz-actions">
-            <button className="btn btn-solid" onClick={() => scrollToId("results")}>Grow my garden ↓</button>
+            <button className="btn btn-solid" onClick={() => document.getElementById("results")?.scrollIntoView()}>Grow my garden ↓</button>
             <span className="hint">Your garden below updates as you choose.</span>
           </div>
         </div>
@@ -80,7 +79,7 @@ export default function Assessment() {
           <div className="sec-head">
             <span className="eyebrow">Sample · your standing</span>
             <h2>Your garden today</h2>
-            <p>In the real assessment, this is your overall standing across all seven areas — a clear, measured read on exactly where your business is. Here it's illustrated with our sample shop.</p>
+            <p>In the real assessment, this is your overall standing across all {PILLARS.length} areas; a clear, measured read on exactly where your business is. Here it's illustrated with our sample shop.</p>
           </div>
           <div className="summary">
             <div className="sum-card">
@@ -114,14 +113,14 @@ export default function Assessment() {
           <div className="sec-head">
             <span className="eyebrow">Sample · what comes next</span>
             <h2>This is where you stand. Then we go to work.</h2>
-            <p>The sample above shows how we measure a business. The valuable part comes next: the tailored recommendations and the roadmap to close the gap — built around your business, in the real assessment.</p>
+            <p>The sample above shows how we measure a business. The valuable part comes next: the tailored recommendations and the roadmap to close the gap, built around your business, in the real assessment.</p>
           </div>
           <div style={{ textAlign: "center", marginTop: 8, padding: 26, background: "var(--card)", border: "1px solid var(--sage)", borderRadius: "var(--r)", boxShadow: "var(--shadow)" }}>
             <p style={{ fontSize: "16.5px", color: "var(--ink)", maxWidth: "62ch", margin: "0 auto 16px" }}>
-              Your free assessment is personalized, goes deeper across all 43 sub-areas, and ends with clear,
-              tailored recommendations — and we walk you through every step together.
+              Your free assessment is personalized, goes deeper across all 57 sub-areas, and ends with clear,
+              tailored recommendations, and we walk you through every step together.
             </p>
-            <button className="btn btn-solid" onClick={() => scrollToId("contact")}>Book your free assessment</button>
+            <button className="btn btn-solid" onClick={() => document.getElementById("contact")?.scrollIntoView()}>Book your free assessment</button>
           </div>
         </div>
       </section>

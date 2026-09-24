@@ -1,3 +1,5 @@
+import { PILLARS } from "../../data/pillars.js";
+
 export default function HowItWorks() {
   return (
     <section id="how">
@@ -16,12 +18,12 @@ export default function HowItWorks() {
           <div className="step reveal">
             <span className="num">02</span>
             <h3>We map you to The Grid</h3>
-            <p>Your answers land on our seven-area model of everything that shapes engagement.</p>
+            <p>Your answers land on our {PILLARS.length}-area model of everything that shapes engagement.</p>
           </div>
           <div className="step reveal">
             <span className="num">03</span>
             <h3>You get your recommendations</h3>
-            <p>Where you stand today, and the tailored roadmap to grow — built with you.</p>
+            <p>Where you stand today, and the tailored roadmap to grow, built with you.</p>
           </div>
         </div>
       </div>

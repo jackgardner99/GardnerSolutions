@@ -9,7 +9,7 @@ export default function CredStrip() {
         <div className="cred-item">
           <div className="cred-ic"><FontAwesomeIcon icon={faBullseye} /></div>
           <div>
-            <b>Kadi — Strategy &amp; Story.</b> A former Deloitte consultant who helped Fortune 500 companies
+            <b>Kadi — Strategy &amp; Story.</b> A Big 4 alum who helped Fortune 500 companies
             define their goals, sharpen their narrative, and close the gap between where they were and where
             they wanted to be — through current-state assessments, gap analyses, and transformation roadmaps.
             She brings that same work to your business: clarifying your goals, finding your story, and

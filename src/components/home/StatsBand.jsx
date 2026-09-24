@@ -4,27 +4,27 @@ export default function StatsBand() {
       <div className="wrap">
         <div className="sec-head">
           <span className="eyebrow">Why it works</span>
-          <h2>The personal touch pays off.</h2>
-          <p>When you share the real story behind the business — and give the right customers a reason to stay — the numbers move.</p>
+          <h2>Your brand, felt from click to counter.</h2>
+          <p>The businesses that win don't just look good in one place. They connect, they feel human, and they stay consistent — from the first search to the front desk to the follow-up email.</p>
         </div>
         <div className="stat-cards">
           <div className="scard reveal">
-            <div className="bignum n-rose">30%</div>
-            <p>higher conversion when a brand leads with its real story instead of a straight sales pitch.</p>
-            <span className="src">Storytelling marketing research</span>
+            <div className="bignum n-rose">52%</div>
+            <p>more valuable: customers who feel emotionally connected to a brand, versus those who are merely satisfied.</p>
+            <span className="src">Harvard Business Review</span>
           </div>
           <div className="scard reveal">
-            <div className="bignum n-apricot">57%</div>
-            <p>of consumers will increase their spending with a brand they feel genuinely connected to.</p>
-            <span className="src">Storytelling marketing research</span>
+            <div className="bignum n-apricot">86%</div>
+            <p>say human interaction still shapes how a brand feels — at the counter, on the phone, in every reply.</p>
+            <span className="src">PwC customer-experience research</span>
           </div>
           <div className="scard reveal">
-            <div className="bignum n-green">306%</div>
-            <p>higher lifetime value from customers who are emotionally connected to a brand — the loyal ones, not just the followers.</p>
-            <span className="src">Storytelling marketing research</span>
+            <div className="bignum n-green">80%</div>
+            <p>shop more with brands that feel consistent across the store, the site, and every message.</p>
+            <span className="src">Redpoint / Dynata consumer survey</span>
           </div>
         </div>
-        <p className="stats-foot"><b>A real story that converts. Connection that keeps the right people close.</b> That's the garden we help you grow.</p>
+        <p className="stats-foot"><b>Connect, feel human, stay consistent — everywhere they meet you.</b> That's the brand we help you grow.</p>
       </div>
     </section>
   );

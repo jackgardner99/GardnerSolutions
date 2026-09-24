@@ -1,8 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// Base path matches the GitHub Pages project URL: jackgardner99.github.io/GardnerSolutions/
+// Served from the custom domain root: gardnersolutions.co
 export default defineConfig({
   plugins: [react()],
-  base: "/GardnerSolutions/",
+  base: "/",
 });
