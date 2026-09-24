@@ -69,9 +69,11 @@ nav{position:sticky; top:0; z-index:40; backdrop-filter:blur(8px);
 .wwd p{color:var(--ink-soft); font-size:15px;}
 .wwd-foot{text-align:center; margin-top:22px; font-size:15px; color:var(--ink-soft); font-style:italic;}
 .wwd-grid.cols-4{grid-template-columns:repeat(4,1fr);}
+.wwd-grid.cols-5{grid-template-columns:repeat(5,1fr); gap:16px;}
 @media (max-width:820px){ .diff-in{grid-template-columns:1fr;} .wwd-grid{grid-template-columns:1fr;} }
-@media (max-width:900px){ .wwd-grid.cols-4{grid-template-columns:repeat(2,1fr);} }
-@media (max-width:560px){ .wwd-grid.cols-4{grid-template-columns:1fr;} }
+@media (max-width:1100px){ .wwd-grid.cols-5{grid-template-columns:repeat(3,1fr);} }
+@media (max-width:900px){ .wwd-grid.cols-4{grid-template-columns:repeat(2,1fr);} .wwd-grid.cols-5{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:560px){ .wwd-grid.cols-4{grid-template-columns:1fr;} .wwd-grid.cols-5{grid-template-columns:1fr;} }
 
 /* ---------- about / packages / contact ---------- */
 .about-band{background:var(--paper-2); border-top:1px solid var(--sage); border-bottom:1px solid var(--sage);}

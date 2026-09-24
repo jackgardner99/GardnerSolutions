@@ -6,7 +6,7 @@ export default function Portfolio() {
           <span className="eyebrow">Sample solutions</span>
           <h2>A look at what we grow.</h2>
           <p>
-            From your founder's story to the site it lives on — here's the kind of tailored work we build
+            From your founder's story to the site it lives on, here's the kind of tailored work we build
             for clients. These are samples that show our range; the specific mix is always scoped to what
             your business needs. <em>Sample visuals shown; client outcomes coming soon.</em>
           </p>
@@ -173,6 +173,29 @@ export default function Portfolio() {
               <span className="eyebrow">Home base</span>
               <h3>Websites</h3>
               <p>Fast, beautiful sites built to be found, trusted, and to sell.</p>
+            </div>
+          </div>
+
+          <div className="pf-card reveal">
+            <div className="pf-visual" style={{ background: "linear-gradient(180deg,#e8efe4,#f3f6ef)" }}>
+              <span className="pf-tag">Sample · In-store</span>
+              <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+                <div style={{ height: 24, margin: "0 20px", borderRadius: "12px 12px 0 0", background: "repeating-linear-gradient(90deg,#4E8A57 0 13px,#dcebd8 13px 26px)" }} />
+                <div style={{ margin: "0 20px", background: "#fff", border: "1px solid var(--sage)", borderBottom: "none", padding: "14px 14px 0", flex: 0.62, display: "flex", gap: 11, alignItems: "flex-end" }}>
+                  <div style={{ flex: 1.5, background: "#eef2ea", border: "1px solid var(--sage)", borderRadius: "8px 8px 0 0", height: "82%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <span style={{ fontFamily: "'Fraunces',serif", color: "var(--moss)", fontWeight: 600, fontSize: 14 }}>Willow &amp; Sage</span>
+                  </div>
+                  <div style={{ flex: 0.6, background: "linear-gradient(180deg,#6BA46F,#4E8A57)", borderRadius: "8px 8px 0 0", height: "92%" }} />
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
+                    <span style={{ width: 13, height: 13, borderRadius: "50%", background: "#E0808F" }} />
+                    <span style={{ width: 17, height: 12, background: "#E4A64A", borderRadius: 3 }} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="pf-body">
+              <h3>In-store experience</h3>
+              <p>Signage, space, and a team that speak the brand — so a visit feels like the business, not just its website.</p>
             </div>
           </div>
 

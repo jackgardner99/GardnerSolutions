@@ -1,3 +1,5 @@
+import { PILLARS } from "../../data/pillars.js";
+
 export default function WhatWeDo() {
   return (
     <section id="whatwedo">
@@ -10,22 +12,26 @@ export default function WhatWeDo() {
             actually need. <a href="#packages" style={{ color: "var(--moss)", fontWeight: 700 }}>See how they package up →</a>
           </p>
         </div>
-        <div className="wwd-grid cols-4">
+        <div className="wwd-grid cols-5">
           <div className="wwd reveal">
             <h3>Diagnosis &amp; strategy</h3>
-            <p>A clear read on where your business stands across all seven areas, with tailored recommendations and a roadmap to your goals.</p>
+            <p>A clear read on where your business stands across all {PILLARS.length} areas of engagement, with tailored recommendations and a roadmap to your goals.</p>
           </div>
           <div className="wwd reveal">
             <h3>Brand &amp; story</h3>
-            <p>Your founder story, messaging, and narrative — the core of why you started, shaped so the right customers connect with it.</p>
+            <p>Your founder story, messaging, and the customer stories and assets that carry it — the core of why you started, shaped so the right people connect.</p>
           </div>
           <div className="wwd reveal">
             <h3>Content &amp; presence</h3>
-            <p>A content calendar and coordinated voice across channels, plus photography and video when it fits your goals.</p>
+            <p>A content engine that turns your story into a steady stream across social, email, and your site — plus photography, video, and podcasts when they fit.</p>
           </div>
           <div className="wwd reveal">
             <h3>Websites &amp; systems</h3>
-            <p>Websites, booking, and customer portals — built end to end, not just advised on.</p>
+            <p>Websites, e-commerce, booking, and customer portals — built end to end. Plus a customer engine that turns purchases into personalized follow-ups.</p>
+          </div>
+          <div className="wwd reveal">
+            <h3>Experience &amp; results</h3>
+            <p>The in-store experience and staff training that keep your brand consistent off-screen — and the reporting that shows what's working.</p>
           </div>
         </div>
         <p className="wwd-foot">
