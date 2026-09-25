@@ -107,23 +107,6 @@ export default function Assessment() {
           </div>
         </div>
       </section>
-
-      <section id="glowup" className="glow-band">
-        <div className="wrap">
-          <div className="sec-head">
-            <span className="eyebrow">Sample · what comes next</span>
-            <h2>This is where you stand. Then we go to work.</h2>
-            <p>The sample above shows how we measure a business. The valuable part comes next: the tailored recommendations and the roadmap to close the gap, built around your business, in the real assessment.</p>
-          </div>
-          <div style={{ textAlign: "center", marginTop: 8, padding: 26, background: "var(--card)", border: "1px solid var(--sage)", borderRadius: "var(--r)", boxShadow: "var(--shadow)" }}>
-            <p style={{ fontSize: "16.5px", color: "var(--ink)", maxWidth: "62ch", margin: "0 auto 16px" }}>
-              Your free assessment is personalized, goes deeper across all 57 sub-areas, and ends with clear,
-              tailored recommendations, and we walk you through every step together.
-            </p>
-            <button className="btn btn-solid" onClick={() => document.getElementById("contact")?.scrollIntoView()}>Book your free assessment</button>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
