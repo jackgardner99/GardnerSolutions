@@ -97,7 +97,22 @@ nav{position:sticky; top:0; z-index:40; backdrop-filter:blur(8px);
 .pkg{background:var(--card); border:1px solid var(--sage); border-radius:var(--r); padding:26px 24px; box-shadow:var(--shadow); display:flex; flex-direction:column;}
 .pkg.feat{border:2px solid var(--leaf-2); position:relative;}
 .pkg-badge{position:absolute; top:-11px; left:24px; background:var(--moss); color:#fff; font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:4px 12px; border-radius:999px;}
-.pkg h3{font-size:20px; color:var(--moss); margin-bottom:6px;}
+.pkg h3{font-size:20px; color:var(--moss); margin-bottom:2px;}
+.pkg-inc{font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--leaf); margin-top:12px;}
+.pkg-baseline{background:rgba(78,138,87,.10); border:1px solid var(--sage); border-radius:12px; padding:14px 18px; font-size:14.5px; color:var(--ink); margin-bottom:20px;}
+.pkg-baseline b{color:var(--moss);}
+.pkg-who{font-size:13px; color:var(--ink-soft); font-style:italic; margin:6px 0 2px;}
+.pkg-list{list-style:none; margin:6px 0 0; padding:0;}
+.pkg-list li{position:relative; padding:6px 0 6px 20px; border-bottom:1px dashed var(--sage-line); font-size:13.5px; color:var(--ink-soft);}
+.pkg-list li:before{content:"\2713"; position:absolute; left:0; color:var(--leaf); font-weight:800;}
+.pkg-list li:last-child{border-bottom:none;}
+.pkg-price{font-family:"Fraunces",serif; font-size:30px; font-weight:600; color:var(--moss); line-height:1.05; margin:6px 0 8px;}
+.pkg-price span{display:block; font-family:"Nunito Sans"; font-size:11.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:3px;}
+.pkg-pay{font-size:11.5px; color:var(--ink-soft); font-style:italic; margin:-4px 0 10px;}
+.assure{display:grid; grid-template-columns:1fr; gap:16px; margin-top:22px;}
+.assure-item{display:flex; gap:12px; align-items:flex-start; background:var(--card); border:1px solid var(--sage); border-radius:var(--r); padding:16px 18px; box-shadow:var(--shadow);}
+.assure-ic{flex:0 0 auto; width:28px; height:28px; border-radius:50%; background:#E9F2EA; color:var(--moss); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;}
+.assure-item p{font-size:14px; color:var(--ink-soft);} .assure-item b{color:var(--moss);}
 .pkg .tag{font-size:12.5px; font-weight:700; color:var(--rose); margin-bottom:12px;}
 .pkg ul{list-style:none; padding:0; margin:0 0 8px;}
 .pkg li{font-size:14px; color:var(--ink-soft); padding:6px 0 6px 22px; position:relative; border-bottom:1px dashed var(--sage-line);}

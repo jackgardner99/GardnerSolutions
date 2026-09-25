@@ -9,9 +9,9 @@ export default function CredStrip() {
         <div className="cred-item">
           <div className="cred-ic"><FontAwesomeIcon icon={faBullseye} /></div>
           <div>
-            <b>Kadi — Strategy &amp; Story.</b> A Big 4 alum who helped Fortune 500 companies
+            <b>Kadi, Strategy &amp; Story.</b> A Big 4 alum who helped Fortune 500 companies
             define their goals, sharpen their narrative, and close the gap between where they were and where
-            they wanted to be — through current-state assessments, gap analyses, and transformation roadmaps.
+            they wanted to be, through current-state assessments, gap analyses, and transformation roadmaps.
             She brings that same work to your business: clarifying your goals, finding your story, and
             building the roadmap to get there.
           </div>
@@ -19,7 +19,7 @@ export default function CredStrip() {
         <div className="cred-item">
           <div className="cred-ic"><FontAwesomeIcon icon={faCode} /></div>
           <div>
-            <b>Jack — Technology &amp; Build.</b> A full-stack developer (front and back end) who builds the
+            <b>Jack, Technology &amp; Build.</b> A full-stack developer (front and back end) who builds the
             technology most agencies can only advise on: custom websites, customer portals, databases,
             content and social systems, and integrations that connect the tools a business already uses. He
             designed Gig Gazette, an app mapping Nashville's local live-music scene, from the ground up.

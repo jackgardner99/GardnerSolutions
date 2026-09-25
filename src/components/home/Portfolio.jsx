@@ -27,7 +27,7 @@ export default function Portfolio() {
             <div className="pf-body">
               <span className="eyebrow">Our signature</span>
               <h3>Founder story series</h3>
-              <p>We sit down with owners and turn their "why" into a warm, on-brand video series customers actually connect with — the heart of a brand people remember.</p>
+              <p>We sit down with owners and turn their "why" into a warm, on-brand video series customers actually connect with, the heart of a brand people remember.</p>
             </div>
           </div>
 
@@ -58,7 +58,7 @@ export default function Portfolio() {
             <div className="pf-body">
               <span className="eyebrow">Members only</span>
               <h3>Customer portals</h3>
-              <p>A secure, logged-in home for bookings, orders, and documents — the space that keeps customers coming back.</p>
+              <p>A secure, logged-in home for bookings, orders, and documents, the space that keeps customers coming back.</p>
             </div>
           </div>
 
@@ -98,7 +98,7 @@ export default function Portfolio() {
             <div className="pf-body">
               <span className="eyebrow">Teach &amp; sell</span>
               <h3>Course content</h3>
-              <p>Structured lessons and curriculum that turn your expertise into something students follow — and buy.</p>
+              <p>Structured lessons and curriculum that turn your expertise into something students follow, and buy.</p>
             </div>
           </div>
 
@@ -195,7 +195,7 @@ export default function Portfolio() {
             </div>
             <div className="pf-body">
               <h3>In-store experience</h3>
-              <p>Signage, space, and a team that speak the brand — so a visit feels like the business, not just its website.</p>
+              <p>Signage, space, and a team that speak the brand, so a visit feels like the business, not just its website.</p>
             </div>
           </div>
 
