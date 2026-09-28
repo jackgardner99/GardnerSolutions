@@ -21,7 +21,7 @@ export default function Portfolio() {
               </div>
               <div className="lower3">
                 <span className="av" style={{ background: "linear-gradient(135deg,#fff,#f0c3c9)" }} />
-                <div><b>Meet the Founder</b><br /><span>Willow &amp; Sage · Episode 3 · 2:14</span></div>
+                <div><b>Meet the Founder</b><br /><span>Founder Story · Episode 3 · 2:14</span></div>
               </div>
             </div>
             <div className="pf-body">
@@ -183,7 +183,7 @@ export default function Portfolio() {
                 <div style={{ height: 24, margin: "0 20px", borderRadius: "12px 12px 0 0", background: "repeating-linear-gradient(90deg,#4E8A57 0 13px,#dcebd8 13px 26px)" }} />
                 <div style={{ margin: "0 20px", background: "#fff", border: "1px solid var(--sage)", borderBottom: "none", padding: "14px 14px 0", flex: 0.62, display: "flex", gap: 11, alignItems: "flex-end" }}>
                   <div style={{ flex: 1.5, background: "#eef2ea", border: "1px solid var(--sage)", borderRadius: "8px 8px 0 0", height: "82%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <span style={{ fontFamily: "'Fraunces',serif", color: "var(--moss)", fontWeight: 600, fontSize: 14 }}>Willow &amp; Sage</span>
+                    <span style={{ fontFamily: "'Fraunces',serif", color: "var(--moss)", fontWeight: 600, fontSize: 14 }}>Your Brand</span>
                   </div>
                   <div style={{ flex: 0.6, background: "linear-gradient(180deg,#6BA46F,#4E8A57)", borderRadius: "8px 8px 0 0", height: "92%" }} />
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>

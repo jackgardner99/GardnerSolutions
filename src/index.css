@@ -191,6 +191,25 @@ section{padding:64px 0;}
 .sum-card{background:var(--card); border:1px solid var(--sage); border-radius:var(--r); padding:30px; box-shadow:var(--shadow); display:flex; flex-direction:column; justify-content:center;}
 .sum-card .eyebrow{color:var(--rose);}
 .sum-tier{font-family:"Fraunces",serif; font-weight:600; font-size:46px; color:var(--moss); margin:8px 0 6px; line-height:1;}
+.ctx{margin:0 0 20px;}
+.ctxq{margin-bottom:14px;}
+.ctxq label{display:block; font-weight:700; font-size:14.5px; color:var(--ink); margin-bottom:8px;}
+.ctxopts{display:flex; gap:8px; flex-wrap:wrap;}
+.ctxopts button{flex:1; min-width:150px; border:1.5px solid var(--sage-line); background:var(--card); color:var(--ink-soft); font-family:inherit; font-weight:700; font-size:13px; padding:10px 12px; border-radius:10px; cursor:pointer; transition:.15s;}
+.ctxopts button:hover{border-color:var(--leaf-2);}
+.ctxopts button.on{background:var(--moss); border-color:var(--moss); color:#fff;}
+@media(max-width:560px){ .ctxopts button{min-width:100%;} }
+.rec-tier{font-family:"Fraunces",serif; font-weight:600; font-size:30px; color:var(--moss); margin:8px 0 6px; line-height:1.05;}
+.rgrid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.rlist{margin-top:6px;}
+.rrow{display:flex; align-items:center; gap:10px; padding:7px 0; border-bottom:1px dashed var(--sage-line); font-size:14px;}
+.rrow:last-child{border-bottom:none;}
+.rdot{width:10px; height:10px; border-radius:50%; flex:0 0 auto;}
+.rname{flex:1; color:var(--ink);}
+.rtier{font-weight:800; font-size:12.5px;}
+@media(max-width:720px){ .rgrid{grid-template-columns:1fr;} }
+.guarantee{margin-top:16px; background:rgba(78,138,87,.10); border:1px solid var(--sage); border-left:4px solid var(--leaf); border-radius:12px; padding:14px 16px; font-size:14.5px; color:var(--ink); max-width:64ch;}
+.guarantee b{color:var(--moss);}
 .sum-read{color:var(--ink-soft); font-size:16.5px;}
 .meter{margin-top:22px; height:12px; border-radius:999px; background:var(--sage); overflow:hidden; position:relative;}
 .meter > i{position:absolute; inset:0 100% 0 0; border-radius:999px; background:linear-gradient(90deg,var(--low),var(--med),var(--high)); transition:right 1.1s cubic-bezier(.22,1,.36,1);}

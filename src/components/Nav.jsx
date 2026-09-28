@@ -39,7 +39,7 @@ export default function Nav() {
           <SectionLink id="whatwedo">Approach</SectionLink>
           <Link to="/about" className={onAbout ? "active" : ""}>About</Link>
           <SectionLink id="packages">Packages</SectionLink>
-          <SectionLink id="contact" className="btn btn-ghost">Book a free assessment</SectionLink>
+          <SectionLink id="contact" className="btn btn-ghost">Book your free diagnosis</SectionLink>
         </div>
       </div>
     </nav>

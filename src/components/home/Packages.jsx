@@ -33,7 +33,7 @@ export default function Packages() {
             </ul>
             <div className="pkg-price"><span>Your price</span>$4,500</div>
             <div className="pkg-pay">Pay in full or in installments</div>
-            <SectionLink id="contact" className="btn btn-ghost" style={ghost}>Start with a free assessment</SectionLink>
+            <SectionLink id="quiz" className="btn btn-ghost" style={ghost}>See what's right for you →</SectionLink>
           </div>
           <div className="pkg feat reveal">
             <span className="pkg-badge">Most popular</span>
@@ -48,7 +48,7 @@ export default function Packages() {
             </ul>
             <div className="pkg-price"><span>Your price</span>$16,500</div>
             <div className="pkg-pay">Pay in full or in installments</div>
-            <SectionLink id="contact" className="btn" style={solid}>Start with a free assessment</SectionLink>
+            <SectionLink id="quiz" className="btn" style={solid}>See what's right for you →</SectionLink>
           </div>
           <div className="pkg reveal">
             <h3>The Flagship</h3>
@@ -62,13 +62,12 @@ export default function Packages() {
             </ul>
             <div className="pkg-price"><span>Your price</span>$65,000</div>
             <div className="pkg-pay">Pay in full or in installments</div>
-            <SectionLink id="contact" className="btn btn-ghost" style={ghost}>Apply for the Flagship</SectionLink>
+            <SectionLink id="quiz" className="btn btn-ghost" style={ghost}>See what's right for you →</SectionLink>
           </div>
         </div>
         <p className="wwd-foot">
           Every tier is one fixed price; the scope flexes to your Grid results. Already have a great website?
-          We reallocate that effort to what you actually need. Not sure where you'd land? Start with the free
-          assessment.
+          We reallocate that effort to what you actually need. Not sure where you'd land? Take the sample assessment above.
         </p>
         <div className="assure">
           <div className="assure-item">
@@ -77,8 +76,7 @@ export default function Packages() {
               <b>The Gardner Solutions Zero-Risk Commitment.</b> We don't believe you should pay for delays.
               Every project we accept receives a customized timeline based on your selected pillars. We
               guarantee to deliver 100% of the assets on your checklist within our agreed-upon timeframe, or
-              you don't pay us a dime. We take on all the operational risk so you can focus entirely on your
-              launch.
+              you don't pay us a dime.
             </p>
           </div>
           <div className="assure-item">
