@@ -14,8 +14,8 @@ export default function Hero() {
             message clear, and help the right customers find you and stay.
           </p>
           <div className="hero-cta">
-            <button className="btn btn-solid" onClick={() => scrollToId("contact")}>Book a free assessment</button>
-            <button className="btn btn-ghost" onClick={() => scrollToId("quiz")}>See a sample assessment</button>
+            <button className="btn btn-solid" onClick={() => scrollToId("contact")}>Book your free diagnosis</button>
+            <button className="btn btn-ghost" onClick={() => scrollToId("quiz")}>Take the 2-minute assessment</button>
           </div>
           <p className="hero-note">🌱 Founded by a Big 4 alum and a full-stack lead developer.</p>
         </div>

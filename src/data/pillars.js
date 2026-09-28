@@ -3,7 +3,7 @@ export const PILLARS = [
     id: 1, name: "Strategy & Governance", type: "Manage",
     question: "Is your engagement guided by a clear plan?",
     option: [
-      "Not really — we wing it.",
+      "Not really, we wing it.",
       "Goals exist but they're loose.",
       "Clear goals, budget, and ownership.",
     ],
@@ -36,7 +36,7 @@ export const PILLARS = [
     low: "No clear brand story; messaging is inconsistent and generic.",
     medium: "A recognizable brand and story exist and show up across channels.",
     high: "A distinctive, well-told story with rich assets that make the brand memorable.",
-    state: 1,
+    state: 2,
   },
   {
     id: 4, name: "Social Media", type: "Deliver",
@@ -62,7 +62,7 @@ export const PILLARS = [
     low: "No site, or an outdated brochure page.",
     medium: "A functional, current site that represents the brand and sells online.",
     high: "A polished, optimized site that converts visitors and ranks well.",
-    state: 1,
+    state: 2,
   },
   {
     id: 6, name: "Advertising & Paid Media", type: "Deliver",
@@ -88,7 +88,7 @@ export const PILLARS = [
     low: "No email or SMS program; the owned audience is untapped.",
     medium: "Regular sends to a growing list, but mostly manual and one-size-fits-all.",
     high: "A segmented, automated lifecycle program that drives repeat revenue on autopilot.",
-    state: 0,
+    state: 1,
   },
   {
     id: 8, name: "Customer Portals & Data Services", type: "Deliver",
@@ -127,7 +127,7 @@ export const PILLARS = [
     low: "Little community or partnership activity; reach depends entirely on paid and posting.",
     medium: "Some community, events, or partnerships, handled ad hoc.",
     high: "A vibrant community and active partnerships that compound reach and loyalty.",
-    state: 0,
+    state: 1,
   },
   {
     id: 11, name: "Reporting & Analytics", type: "Enable",
@@ -140,7 +140,7 @@ export const PILLARS = [
     low: "No measurement; decisions are guesswork.",
     medium: "Basic metrics tracked and reviewed occasionally.",
     high: "Clear KPIs, dashboards, and insight-driven decisions.",
-    state: 0,
+    state: 1,
   },
 ];
 

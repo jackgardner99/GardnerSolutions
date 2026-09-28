@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { scrollToId } from "../utils/scrollTo.js";
 
 // Scrolls to a Home page section, navigating to Home first if needed.
-export default function SectionLink({ id, children, className }) {
+export default function SectionLink({ id, children, className, style }) {
   const { pathname } = useLocation();
 
   const handleClick = (e) => {
@@ -14,7 +14,7 @@ export default function SectionLink({ id, children, className }) {
   };
 
   return (
-    <Link to={`/#${id}`} className={className} onClick={handleClick}>
+    <Link to={`/#${id}`} className={className} style={style} onClick={handleClick}>
       {children}
     </Link>
   );
