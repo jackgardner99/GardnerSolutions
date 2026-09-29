@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xppzvkey";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mkjgyqvj";
 
 export default function Contact() {
   const formRef = useRef(null);

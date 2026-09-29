@@ -25,6 +25,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          VITE_ASSESSMENT_ENDPOINT: https://api-production-d8845.up.railway.app/api/assessment
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
