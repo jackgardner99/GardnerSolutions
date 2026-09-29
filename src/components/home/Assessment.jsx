@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { PILLARS, TIERS, SCORE } from "../../data/pillars.js";
 
+// Gardner Grid API (GardnerSolutionsAssessmentQuiz-api). Falls back to
+// Formspree when VITE_ASSESSMENT_ENDPOINT isn't set at build time.
+const ASSESSMENT_ENDPOINT = import.meta.env.VITE_ASSESSMENT_ENDPOINT;
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xppzvkey";
 
 const WEIGHTS = { 1: 3, 2: 4, 3: 5, 4: 4, 5: 5, 6: 3, 7: 4, 8: 5, 9: 5, 10: 3, 11: 3 };
@@ -47,7 +50,14 @@ export default function Assessment() {
       wsum += w * PTS[tier];
       wmax += w * 5;
       if (tier === "Low") gaps++;
-      return { pillar: p.name, tier };
+      return {
+        area: String(p.id),
+        pillar: p.name,
+        question: p.question,
+        choice: p.option[answers[i]],
+        choiceIndex: answers[i],
+        tier,
+      };
     });
     const weightedPct = wmax ? wsum / wmax : 0;
     const gapRank = weightedPct >= 0.75 ? 0 : weightedPct >= 0.5 ? 1 : 2;
@@ -72,6 +82,38 @@ export default function Assessment() {
     const computed = computeResult();
     const full = { ...computed, name: form.name, email: form.email, business: form.business };
 
+    try {
+      if (ASSESSMENT_ENDPOINT) {
+        await sendToApi(computed);
+      } else {
+        await sendToFormspree(computed);
+      }
+    } catch {
+      // still show the result locally even if the network request fails
+    }
+    setResult(full);
+    setStatus("sent");
+  };
+
+  const sendToApi = (computed) => {
+    const { breakdown, ...scores } = computed;
+    return fetch(ASSESSMENT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...scores,
+        name: form.name,
+        email: form.email,
+        business: form.business || null,
+        submittedAt: new Date().toISOString(),
+        supportPref,
+        capacity,
+        answers: breakdown,
+      }),
+    });
+  };
+
+  const sendToFormspree = (computed) => {
     const fd = new FormData();
     fd.append("name", form.name);
     fd.append("email", form.email);
@@ -83,14 +125,7 @@ export default function Assessment() {
     fd.append("capacity", capacity);
     fd.append("breakdown", computed.breakdown.map((b) => `${b.pillar}: ${b.tier}`).join("\n"));
     fd.append("_subject", `Diagnosis result: ${computed.recommendedPackage} for ${form.name || "someone"}`);
-
-    try {
-      await fetch(FORMSPREE_ENDPOINT, { method: "POST", headers: { Accept: "application/json" }, body: fd });
-    } catch {
-      // still show the result locally even if the network request fails
-    }
-    setResult(full);
-    setStatus("sent");
+    return fetch(FORMSPREE_ENDPOINT, { method: "POST", headers: { Accept: "application/json" }, body: fd });
   };
 
   return (
