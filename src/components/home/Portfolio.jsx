@@ -1,4 +1,77 @@
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+
+const SITES = [
+  {
+    name: "In Your Nature",
+    img: "portfolio/getinyournature.jpg",
+    alt: "In Your Nature website",
+    description: "A coaching site built around one voice and story, soft color washes, a cursive mark, and a clear path from question to booked call.",
+    url: "https://getinyournature.com/",
+  },
+  {
+    name: "Gig Gazette",
+    img: "portfolio/giggazette.jpg",
+    alt: "Gig Gazette website",
+    description: "An interactive map of Nashville's live music scene, shows, open mics, and writers rounds, filterable by date, venue, and amenities.",
+    url: "https://giggazette.com/",
+  },
+  {
+    name: "The Gardners",
+    img: "portfolio/thegardnersmusic.jpg",
+    alt: "The Gardners website",
+    description: "A band's home base for shows, merch, and music, built to link straight into Gig Gazette's gig listings.",
+    url: "https://thegardnersmusic.com/",
+  },
+];
+
+function SitesModal({ onClose }) {
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose]);
+
+  return createPortal(
+    <div className="site-modal-overlay" onClick={onClose}>
+      <div className="site-modal" onClick={(e) => e.stopPropagation()}>
+        <button type="button" className="site-modal-close" aria-label="Close" onClick={onClose}>
+          <FontAwesomeIcon icon={faXmark} />
+        </button>
+        <span className="eyebrow">Our work</span>
+        <h3>Websites we've made</h3>
+        <p>Three live sites, built end to end for real clients.</p>
+        <div className="site-modal-grid">
+          {SITES.map((s) => (
+            <div className="pf-card" key={s.name}>
+              <div className="pf-visual">
+                <span className="pf-tag">Live site</span>
+                <img src={s.img} alt={s.alt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+              </div>
+              <div className="pf-body">
+                <h3>{s.name}</h3>
+                <p>{s.description}</p>
+                <a href={s.url} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: 10, color: "var(--moss)", fontWeight: 700, fontSize: 13, textDecoration: "none" }}>Visit site →</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+}
+
 export default function Portfolio() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   return (
     <section id="work">
       <div className="wrap">
@@ -14,18 +87,19 @@ export default function Portfolio() {
         <div className="pf-grid">
 
           <div className="pf-card pf-feat reveal">
-            <div className="pf-visual" style={{ background: "linear-gradient(135deg,#E0808F,#E4A64A)" }}>
-              <span className="pf-tag">Sample · Interview series</span>
-              <div className="playbtn">
-                <svg width="20" height="20" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#2E5E3A" /></svg>
-              </div>
-              <div className="lower3">
-                <span className="av" style={{ background: "linear-gradient(135deg,#fff,#f0c3c9)" }} />
-                <div><b>Meet the Founder</b><br /><span>Founder Story · Episode 3 · 2:14</span></div>
-              </div>
+            <div className="pf-visual">
+              <span className="pf-tag">Meet the Founders</span>
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                poster="videos/founder-story-poster.jpg"
+                style={{ width: "100%", height: "100%", objectFit: "cover", background: "#000" }}
+              >
+                <source src="videos/founder-story.mp4" type="video/mp4" />
+              </video>
             </div>
             <div className="pf-body">
-              <span className="eyebrow">Our signature</span>
               <h3>Founder story series</h3>
               <p>We sit down with owners and turn their "why" into a warm, on-brand video series customers actually connect with, the heart of a brand people remember.</p>
             </div>
@@ -56,7 +130,6 @@ export default function Portfolio() {
               </div>
             </div>
             <div className="pf-body">
-              <span className="eyebrow">Members only</span>
               <h3>Customer portals</h3>
               <p>A secure, logged-in home for bookings, orders, and documents, the space that keeps customers coming back.</p>
             </div>
@@ -96,7 +169,6 @@ export default function Portfolio() {
               </div>
             </div>
             <div className="pf-body">
-              <span className="eyebrow">Teach &amp; sell</span>
               <h3>Course content</h3>
               <p>Structured lessons and curriculum that turn your expertise into something students follow, and buy.</p>
             </div>
@@ -126,7 +198,6 @@ export default function Portfolio() {
               </div>
             </div>
             <div className="pf-body">
-              <span className="eyebrow">Direction</span>
               <h3>Content strategy</h3>
               <p>A calendar and a voice that keep every channel saying the same, right thing.</p>
             </div>
@@ -145,36 +216,27 @@ export default function Portfolio() {
               </div>
             </div>
             <div className="pf-body">
-              <span className="eyebrow">Imagery</span>
               <h3>Photography</h3>
               <p>Bright, natural product and lifestyle photos that make the everyday look intentional.</p>
             </div>
           </div>
 
-          <div className="pf-card reveal">
-            <div className="pf-visual" style={{ background: "#eef2ea" }}>
-              <span className="pf-tag">Sample · Website</span>
-              <div className="brchrome">
-                <i style={{ background: "#E0808F" }} />
-                <i style={{ background: "#E4A64A" }} />
-                <i style={{ background: "#6BA46F" }} />
-                <span className="url" />
-              </div>
-              <div style={{ padding: 14 }}>
-                <div style={{ height: 38, borderRadius: 8, background: "linear-gradient(135deg,#6BA46F,#C4D6BE)", marginBottom: 10 }} />
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8 }}>
-                  <div style={{ height: 34, borderRadius: 6, background: "#fff", border: "1px solid var(--sage)" }} />
-                  <div style={{ height: 34, borderRadius: 6, background: "#fff", border: "1px solid var(--sage)" }} />
-                  <div style={{ height: 34, borderRadius: 6, background: "#fff", border: "1px solid var(--sage)" }} />
-                </div>
-              </div>
+          <button
+            type="button"
+            className="pf-card reveal pf-trigger"
+            onClick={() => setModalOpen(true)}
+          >
+            <div className="pf-visual" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 4, padding: 4, background: "#fff" }}>
+              <span className="pf-tag">Websites we've made</span>
+              {SITES.map((s) => (
+                <img key={s.name} src={s.img} alt="" aria-hidden="true" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", borderRadius: 6 }} />
+              ))}
             </div>
             <div className="pf-body">
-              <span className="eyebrow">Home base</span>
-              <h3>Websites</h3>
-              <p>Fast, beautiful sites built to be found, trusted, and to sell.</p>
+              <h3>Websites we've made</h3>
+              <p>Three live sites we've built for real clients. Tap to see them, and visit each one.</p>
             </div>
-          </div>
+          </button>
 
           <div className="pf-card reveal">
             <div className="pf-visual" style={{ background: "linear-gradient(180deg,#e8efe4,#f3f6ef)" }}>
@@ -201,6 +263,7 @@ export default function Portfolio() {
 
         </div>
       </div>
+      {modalOpen && <SitesModal onClose={() => setModalOpen(false)} />}
     </section>
   );
 }
