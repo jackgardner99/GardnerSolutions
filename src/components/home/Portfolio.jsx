@@ -71,6 +71,7 @@ function SitesModal({ onClose }) {
 
 export default function Portfolio() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   return (
     <section id="work">
@@ -88,12 +89,15 @@ export default function Portfolio() {
 
           <div className="pf-card pf-feat reveal">
             <div className="pf-visual">
-              <span className="pf-tag">Meet the Founders</span>
+              {!videoPlaying && <span className="pf-tag">Meet the Founders</span>}
               <video
                 controls
                 playsInline
                 preload="metadata"
                 poster="videos/founder-story-poster.jpg"
+                onPlay={() => setVideoPlaying(true)}
+                onPause={() => setVideoPlaying(false)}
+                onEnded={() => setVideoPlaying(false)}
                 style={{ width: "100%", height: "100%", objectFit: "cover", background: "#000" }}
               >
                 <source src="videos/founder-story.mp4" type="video/mp4" />
