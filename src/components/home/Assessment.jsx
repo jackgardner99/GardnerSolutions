@@ -9,6 +9,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/xppzvkey";
 const WEIGHTS = { 1: 3, 2: 4, 3: 5, 4: 4, 5: 5, 6: 3, 7: 4, 8: 5, 9: 5, 10: 3, 11: 3 };
 const PTS = { Low: 1, Medium: 3, High: 5 };
 const tierColor = { Low: "var(--low)", Medium: "var(--med)", High: "var(--high)" };
+const TIER_NAMES = ["The Foundation", "The Full Experience", "The Flagship"];
 
 const SUPPORT_OPTIONS = [
   { key: "DIY", label: "Give us the playbooks" },
@@ -20,14 +21,21 @@ const CAPACITY_OPTIONS = [
   { key: "thin", label: "One busy person" },
   { key: "none", label: "No one to run it" },
 ];
+const REVENUE_OPTIONS = [
+  { key: "under50", label: "Under $50k" },
+  { key: "50to250", label: "$50k–$250k" },
+  { key: "250to500", label: "$250k–$500k" },
+  { key: "over500", label: "$500k+" },
+];
 
 export default function Assessment() {
   const [answers, setAnswers] = useState(() => PILLARS.map((p) => p.state));
   const [supportPref, setSupportPref] = useState("DIY");
   const [capacity, setCapacity] = useState("canRun");
+  const [revenue, setRevenue] = useState("under50");
   const [form, setForm] = useState({ name: "", email: "", business: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent
-  const [result, setResult] = useState(null);
+  const [submittedContact, setSubmittedContact] = useState(null);
 
   const pick = (i, ti) => {
     setAnswers((prev) => {
@@ -60,27 +68,47 @@ export default function Assessment() {
       };
     });
     const weightedPct = wmax ? wsum / wmax : 0;
+
+    // The Grid gap drives what's NEEDED. 75%+ = Foundation, 50-75% = Full, under 50% = Flagship.
     const gapRank = weightedPct >= 0.75 ? 0 : weightedPct >= 0.5 ? 1 : 2;
-    const prefRank = { DIY: 0, DWY: 1, DFY: 2 }[supportPref];
-    const capRank = capacity === "canRun" ? 0 : 1;
-    const finalRank = Math.max(gapRank, prefRank, capRank);
-    const recommendedPackage = ["The Foundation", "The Full Experience", "The Flagship"][finalRank];
+
+    // Support preference and thin capacity can lift the tier, but only when there's a real
+    // gap to address, and only up to Full — Flagship stays reserved for the Grid gap itself.
+    const prefRank = { DIY: 0, DWY: 1, DFY: 1 }[supportPref];
+    const capBump = capacity === "canRun" ? 0 : 1;
+    const lift = gapRank > 0 ? Math.max(prefRank, Math.min(1, gapRank + capBump)) : 0;
+    const neededRank = Math.min(2, Math.max(gapRank, lift));
+    const neededTier = TIER_NAMES[neededRank];
+
+    // Revenue caps where we'd responsibly START (healthy marketing spend runs ~7-10% of
+    // revenue), but never caps what's actually NEEDED — that's a diagnosis, not a bill.
+    const affordRank = { under50: 0, "50to250": 1, "250to500": 1, over500: 2 }[revenue];
+    const startRank = Math.min(neededRank, affordRank);
+    const grow = neededRank > startRank;
+    const startTier = TIER_NAMES[startRank];
 
     return {
       averageScore: Number(avg.toFixed(2)),
       standing,
       gaps,
       weightedPct: Math.round(weightedPct * 100),
-      recommendedPackage,
+      supportPref,
+      capacity,
+      revenue,
+      neededTier,
+      startTier,
+      recommendedPackage: startTier,
+      grow,
       breakdown,
     };
   };
+
+  const result = submittedContact ? { ...computeResult(), ...submittedContact } : null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
     const computed = computeResult();
-    const full = { ...computed, name: form.name, email: form.email, business: form.business };
 
     try {
       if (ASSESSMENT_ENDPOINT) {
@@ -91,7 +119,7 @@ export default function Assessment() {
     } catch {
       // still show the result locally even if the network request fails
     }
-    setResult(full);
+    setSubmittedContact({ name: form.name, email: form.email });
     setStatus("sent");
   };
 
@@ -106,8 +134,6 @@ export default function Assessment() {
         email: form.email,
         business: form.business || null,
         submittedAt: new Date().toISOString(),
-        supportPref,
-        capacity,
         answers: breakdown,
       }),
     });
@@ -120,11 +146,14 @@ export default function Assessment() {
     fd.append("business", form.business);
     fd.append("standing", computed.standing);
     fd.append("weighted_pct", `${computed.weightedPct}%`);
-    fd.append("recommended_package", computed.recommendedPackage);
+    fd.append("needed_tier", computed.neededTier);
+    fd.append("start_tier", computed.startTier);
+    fd.append("grow", computed.grow ? "yes" : "no");
     fd.append("support_pref", supportPref);
     fd.append("capacity", capacity);
+    fd.append("revenue", revenue);
     fd.append("breakdown", computed.breakdown.map((b) => `${b.pillar}: ${b.tier}`).join("\n"));
-    fd.append("_subject", `Diagnosis result: ${computed.recommendedPackage} for ${form.name || "someone"}`);
+    fd.append("_subject", `Diagnosis result: ${computed.startTier} for ${form.name || "someone"}`);
     return fetch(FORMSPREE_ENDPOINT, { method: "POST", headers: { Accept: "application/json" }, body: fd });
   };
 
@@ -179,7 +208,7 @@ export default function Assessment() {
             <span className="eyebrow">Your result</span>
             <h2>Where should we send your score?</h2>
             <p>
-              Answer two quick questions, then enter your name and email to instantly view your{" "}
+              Answer three quick questions, then enter your name and email to instantly view your{" "}
               {PILLARS.length}-pillar breakdown and the fixed-price tier that fits your results.
             </p>
           </div>
@@ -215,6 +244,26 @@ export default function Assessment() {
                 ))}
               </div>
             </div>
+            <div className="ctxq">
+              <label>Roughly, what does the business do in a year?</label>
+              <p className="ctx-help">
+                We use this only to recommend a package you can comfortably afford, never to charge
+                more. A healthy marketing budget is about 7–10% of revenue, so this keeps our
+                recommendation right-sized for your stage.
+              </p>
+              <div className="ctxopts">
+                {REVENUE_OPTIONS.map((o) => (
+                  <button
+                    key={o.key}
+                    type="button"
+                    className={revenue === o.key ? "on" : ""}
+                    onClick={() => setRevenue(o.key)}
+                  >
+                    {o.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           {status !== "sent" && (
@@ -240,12 +289,26 @@ export default function Assessment() {
           {result && (
             <div className="rgrid" style={{ marginTop: 8 }}>
               <div className="sum-card">
-                <span className="eyebrow">Recommended tier</span>
-                <div className="rec-tier">{result.recommendedPackage}</div>
+                <span className="eyebrow">Your sample result</span>
+                <p className="sum-score">Weighted Grid score: <b>{result.weightedPct}%</b></p>
+                <div className="rec-two">
+                  <div className="rec-line">
+                    <span className="rec-lab">What the Grid says you need</span>
+                    <span className="rec-val">{result.neededTier.replace("The ", "")}</span>
+                  </div>
+                  <div className="rec-line">
+                    <span className="rec-lab">Where we'd start you</span>
+                    <span className={`rec-val${result.grow ? "" : " rec-same"}`}>
+                      {result.grow ? result.startTier.replace("The ", "") : "Same — it fits your stage"}
+                    </span>
+                  </div>
+                </div>
                 <p className="sum-read">
-                  Your weighted Grid score is <b>{result.weightedPct}%</b>. Combined with the support you
-                  want and the team you have, <b>{result.recommendedPackage}</b> fits best. This is a
-                  sample; the free diagnosis we run with you goes deeper. A copy is on its way to{" "}
+                  {result.grow
+                    ? `A healthy marketing budget runs about 7–10% of revenue, so we'd start you at ${result.startTier.replace("The ", "")} and build toward the full plan as it pays for itself. Got the budget to invest more up front? We'll map that out together.`
+                    : "That fits comfortably within a healthy marketing budget for your stage (about 7–10% of revenue)."}{" "}
+                  This is a quick sample; for a limited time, the free deep diagnosis we run with you goes
+                  across all 57 details and confirms the tier that truly fits. A copy is on its way to{" "}
                   {result.email}.
                 </p>
                 <a href="#contact" className="btn" style={{ background: "var(--moss)", color: "#fff", border: "1.5px solid var(--moss)", marginTop: 12 }}>
