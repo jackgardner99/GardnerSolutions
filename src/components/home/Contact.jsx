@@ -33,7 +33,7 @@ export default function Contact() {
         <div className="sec-head">
           <span className="eyebrow" style={{ color: "var(--rose)" }}>Get in touch</span>
           <h2>Book your free diagnosis.</h2>
-          <p>Tell us a little about your business and we'll map your garden together, then tend the areas that will grow you fastest. No cost, no obligation.</p>
+          <p><b>For a limited time</b>, we sit down with you, walk all 57 details of the Grid, and confirm the tier that actually fits — then tend the areas that will grow you fastest. No cost, no obligation, and the diagnosis is yours to keep whether or not we work together.</p>
           <p className="guarantee"><b>Our promise:</b> the diagnosis will surface at least three specific gaps that are costing you customers, or we'll send you off with an hour of free strategy consulting. No strings.</p>
         </div>
         <form className="cform" ref={formRef} onSubmit={handleSubmit}>

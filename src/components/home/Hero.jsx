@@ -17,7 +17,7 @@ export default function Hero() {
             <button className="btn btn-solid" onClick={() => scrollToId("contact")}>Book your free diagnosis</button>
             <button className="btn btn-ghost" onClick={() => scrollToId("quiz")}>Take the 2-minute assessment</button>
           </div>
-          <p className="hero-note">🌱 Founded by a Big 4 alum and a full-stack lead developer.</p>
+          <p className="hero-note">🌱 Founded by a Big 4 alum and a full-stack developer.</p>
         </div>
         <div className="hero-art" id="heroArt" aria-hidden="true">
           <div className="hero-flowers" style={{ position: "absolute", bottom: 0, left: "50%", display: "flex", alignItems: "flex-end", gap: 6, width: "max-content" }}>
