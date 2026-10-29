@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -27,7 +28,18 @@ const SITES = [
   },
 ];
 
-function SitesModal({ onClose }) {
+const PHOTOS = [
+  { img: "portfolio/photos/drum-shop-session.jpg", alt: "Live podcast taping with an audience in a drum shop", label: "Events" },
+  { img: "portfolio/photos/artist-night.jpg", alt: "Singer smiling on stage with her band at an artist night", label: "Live music" },
+  { img: "portfolio/photos/headshot-window.jpg", alt: "Professional headshot by an office window", label: "Headshots" },
+  { img: "portfolio/photos/tablescape.jpg", alt: "Brunch table set with coral napkins and citrus centerpieces", label: "Styled events" },
+  { img: "portfolio/photos/business-dinner.jpg", alt: "Speaker addressing guests at a private business dinner", label: "Events" },
+  { img: "portfolio/photos/brunch-spread.jpg", alt: "French toast and crepes on a brunch sideboard", label: "Food" },
+  { img: "portfolio/photos/place-setting.jpg", alt: "Place setting with a handwritten name card and grapefruit mimosas", label: "Styled events" },
+  { img: "portfolio/photos/headshot-studio.jpg", alt: "Studio headshot against a light gray wall", label: "Headshots" },
+];
+
+function Modal({ eyebrow, title, text, wide, onClose, children }) {
   useEffect(() => {
     const onKey = (e) => { if (e.key === "Escape") onClose(); };
     document.addEventListener("keydown", onKey);
@@ -41,13 +53,23 @@ function SitesModal({ onClose }) {
 
   return createPortal(
     <div className="site-modal-overlay" onClick={onClose}>
-      <div className="site-modal" onClick={(e) => e.stopPropagation()}>
+      <div className={`site-modal${wide ? " site-modal-wide" : ""}`} onClick={(e) => e.stopPropagation()}>
         <button type="button" className="site-modal-close" aria-label="Close" onClick={onClose}>
           <FontAwesomeIcon icon={faXmark} />
         </button>
-        <span className="eyebrow">Our work</span>
-        <h3>Websites we've made</h3>
-        <p>Three live sites, built end to end for real clients.</p>
+        <span className="eyebrow">{eyebrow}</span>
+        <h3>{title}</h3>
+        <p>{text}</p>
+        {children}
+      </div>
+    </div>,
+    document.body
+  );
+}
+
+function SitesModal({ onClose }) {
+  return (
+    <Modal eyebrow="Our work" title="Websites we've made" text="Three live sites, built end to end for real clients." onClose={onClose}>
         <div className="site-modal-grid">
           {SITES.map((s) => (
             <div className="pf-card" key={s.name}>
@@ -63,14 +85,27 @@ function SitesModal({ onClose }) {
             </div>
           ))}
         </div>
+    </Modal>
+  );
+}
+
+function PhotosModal({ onClose }) {
+  return (
+    <Modal wide eyebrow="Our work" title="Photography" text="Events, live music, styled tables, and headshots, all shot by our team. Tap any photo to see it full size." onClose={onClose}>
+      <div className="photo-gallery">
+        {PHOTOS.map((p) => (
+          <a key={p.img} href={p.img} target="_blank" rel="noopener noreferrer">
+            <img src={p.img} alt={p.alt} loading="lazy" />
+          </a>
+        ))}
       </div>
-    </div>,
-    document.body
+    </Modal>
   );
 }
 
 export default function Portfolio() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [photosOpen, setPhotosOpen] = useState(false);
   const [videoPlaying, setVideoPlaying] = useState(false);
 
   return (
@@ -109,6 +144,17 @@ export default function Portfolio() {
             </div>
           </div>
 
+          <Link to="/portal-demo" className="pf-card reveal pf-trigger" style={{ textDecoration: "none" }}>
+            <div className="pf-visual">
+              <span className="pf-tag">Try the demo</span>
+              <img src="portfolio/portal-demo.jpg" alt="Sample client portal dashboard" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+            </div>
+            <div className="pf-body">
+              <h3>Customer portals</h3>
+              <p>A secure, logged-in home for project updates, conversations, documents, and meetings. Click through a sample portal we built.</p>
+            </div>
+          </Link>
+
           <button
             type="button"
             className="pf-card reveal pf-trigger"
@@ -126,9 +172,27 @@ export default function Portfolio() {
             </div>
           </button>
 
+          <button
+            type="button"
+            className="pf-card pf-feat reveal pf-trigger"
+            onClick={() => setPhotosOpen(true)}
+          >
+            <div className="pf-visual pf-photo-mosaic">
+              <span className="pf-tag">Photography</span>
+              {PHOTOS.slice(0, 4).map((p) => (
+                <img key={p.img} src={p.img} alt="" aria-hidden="true" />
+              ))}
+            </div>
+            <div className="pf-body">
+              <h3>Photography</h3>
+              <p>Events, live music, styled tables, and headshots, shot by our team so your brand looks like itself everywhere. Tap to see the gallery.</p>
+            </div>
+          </button>
+
         </div>
       </div>
       {modalOpen && <SitesModal onClose={() => setModalOpen(false)} />}
+      {photosOpen && <PhotosModal onClose={() => setPhotosOpen(false)} />}
     </section>
   );
 }
