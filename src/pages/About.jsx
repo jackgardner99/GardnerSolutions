@@ -106,7 +106,7 @@ export default function About() {
             </div>
           </div>
           <div style={{ textAlign: "center", marginTop: 34 }}>
-            <SectionLink id="contact" className="btn btn-solid">Book your free diagnosis</SectionLink>
+            <SectionLink id="contact" className="btn btn-solid">Book your Grid Diagnostic</SectionLink>
           </div>
         </div>
       </section>
