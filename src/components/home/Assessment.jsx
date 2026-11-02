@@ -169,7 +169,7 @@ export default function Assessment() {
               Change any answer to see how your grade, and the package that fits, shift. The{" "}
               <b>full diagnosis</b> we run with you goes across all 57 sub-areas for tailored
               recommendations, built entirely around your business.{" "}
-              <a href="#contact" style={{ color: "var(--moss)", fontWeight: 700 }}>Book your free diagnosis →</a>
+              <a href="#contact" style={{ color: "var(--moss)", fontWeight: 700 }}>Book your Grid Diagnostic →</a>
             </p>
           </div>
           <div className="qgrid">
@@ -307,12 +307,13 @@ export default function Assessment() {
                   {result.grow
                     ? `A healthy marketing budget runs about 7–10% of revenue, so we'd start you at ${result.startTier.replace("The ", "")} and build toward the full plan as it pays for itself. Got the budget to invest more up front? We'll map that out together.`
                     : "That fits comfortably within a healthy marketing budget for your stage (about 7–10% of revenue)."}{" "}
-                  This is a quick sample; for a limited time, the free deep diagnosis we run with you goes
-                  across all 57 details and confirms the tier that truly fits. A copy is on its way to{" "}
+                  This is the quick, free assessment. For a deeper dive, the Grid Diagnostic goes across all
+                  57 details with you and confirms the tier that truly fits, for $500, credited in full toward
+                  any package. A copy is on its way to{" "}
                   {result.email}.
                 </p>
                 <a href="#contact" className="btn" style={{ background: "var(--moss)", color: "#fff", border: "1.5px solid var(--moss)", marginTop: 12 }}>
-                  Book your free diagnosis →
+                  Book your Grid Diagnostic →
                 </a>
                 <a href="#packages" style={{ display: "inline-block", marginTop: 10, marginLeft: 14, color: "var(--moss)", fontWeight: 700, fontSize: 13, textDecoration: "none" }}>
                   See the packages ↓

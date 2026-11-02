@@ -40,7 +40,7 @@ export default function Nav() {
           <Link to="/about" className={onAbout ? "active" : ""}>About</Link>
           <SectionLink id="packages">Packages</SectionLink>
           <a href="https://portal.gardnersolutions.co/login">Client login</a>
-          <SectionLink id="contact" className="btn btn-ghost">Book your free diagnosis</SectionLink>
+          <SectionLink id="contact" className="btn btn-ghost">Book your Grid Diagnostic</SectionLink>
         </div>
       </div>
     </nav>

@@ -9,69 +9,79 @@ export default function Packages() {
       <div className="wrap">
         <div className="sec-head">
           <span className="eyebrow">Packages</span>
-          <h2>Three ways to work together. One fixed price each.</h2>
+          <h2>Start with a diagnosis. Grow from there.</h2>
           <p>
-            No itemized menus, no surprise quotes. Your Grid results show which areas matter most, and each
-            tier sets how many we take on and how much of the work we do.
+            Every engagement starts with the Grid Diagnostic. From there, pick the path that fits: run it
+            yourself, build it with us, or let us keep it growing month to month.
           </p>
         </div>
-        <p className="pkg-baseline">
-          <b>Every tier starts with the same foundation:</b> the Grid diagnostic, tailored recommendations,
-          and a branding &amp; strategy workshop. From there you choose how much we do: the playbook to run
-          yourself, built with your team, or fully done for you.
-        </p>
+
+        <div className="diag-card reveal">
+          <div>
+            <span className="eyebrow" style={{ color: "var(--rose)" }}>Step one for everyone</span>
+            <h3>The Grid Diagnostic</h3>
+            <p>
+              We sit down with you, go through all 57 details across the 11 pillars, and hand you a written
+              roadmap with tailored recommendations and the package that fits. The roadmap is yours to keep
+              whether or not we work together.
+            </p>
+          </div>
+          <div className="diag-price">
+            <div className="pkg-price"><span>One-time</span>$500</div>
+            <p className="pkg-pay">Credited in full toward any package.</p>
+            <SectionLink id="contact" className="btn btn-solid">Book your Grid Diagnostic</SectionLink>
+          </div>
+        </div>
+
         <div className="pkg-grid">
           <div className="pkg reveal">
-            <h3>The Foundation</h3>
-            <div className="tag">The Playbook, you run it</div>
-            <p className="pkg-who">For businesses that are mostly in good shape and want the plan and templates to run themselves.</p>
+            <h3>Foundation</h3>
+            <div className="tag">The playbook, you run it</div>
+            <p className="pkg-who">For businesses that want a clear plan and the tools to run it themselves.</p>
             <div className="pkg-inc">What's included · 30 days</div>
             <ul className="pkg-list">
-              <li>The baseline: Grid diagnostic, tailored recommendations, and a branding &amp; strategy workshop</li>
-              <li>Playbooks and templates for your top 3 areas from the Grid</li>
-              <li>A ready-to-launch template website</li>
+              <li>Grid Diagnostic and a branding &amp; strategy workshop</li>
+              <li>Playbooks and templates for 2–3 areas from your Grid</li>
+              <li>Those areas can include a ready-to-launch website, set up with your brand</li>
               <li>You execute; we hand you the how</li>
             </ul>
-            <div className="pkg-price"><span>Your price</span>$4,500</div>
-            <div className="pkg-pay">Paid in full. Upgrade to the Full Experience within 60 days and your $4,500 is credited.</div>
-            <SectionLink id="quiz" className="btn btn-ghost" style={ghost}>See what's right for you →</SectionLink>
+            <div className="pkg-price"><span>Founding-client price · one-time</span>$2,500</div>
+            <div className="pkg-pay">Upgrade to Build within 60 days and your $2,500 is credited.</div>
+            <SectionLink id="quiz" className="btn btn-ghost" style={ghost}>Take the fit quiz →</SectionLink>
           </div>
           <div className="pkg feat reveal">
-            <span className="pkg-badge">Most popular</span>
-            <h3>The Full Experience</h3>
-            <div className="tag">Built with your team</div>
-            <p className="pkg-who">For businesses ready to level up, where we do the heavy lifting and your team handles the day-to-day.</p>
-            <div className="pkg-inc">What's included · 90 days</div>
+            <h3>Build</h3>
+            <div className="tag">Built with your team · one-time project</div>
+            <p className="pkg-who">For businesses ready to fix their biggest gaps, with us doing the heavy lifting.</p>
+            <div className="pkg-inc">What's included · 60–90 days</div>
             <ul className="pkg-list">
-              <li>Everything in the baseline</li>
-              <li>Up to 6 areas from your Grid: campaigns, social, email, story, course, and experience</li>
-              <li>One custom build: your website or a customer portal</li>
-              <li>We do the hard part; your team runs the day-to-day alongside us</li>
+              <li>Everything in Foundation</li>
+              <li>2–3 areas from your Grid, built out with you</li>
+              <li>Those areas can include a custom website or customer portal</li>
+              <li>Your team trained to run it day to day</li>
             </ul>
-            <div className="pkg-price"><span>Founding-client price</span>$16,500</div>
-            <div className="pkg-pay">Pay in full, or 3 payments of $5,750. Optional support plan afterward, $500/month.</div>
-            <SectionLink id="quiz" className="btn" style={solid}>See what's right for you →</SectionLink>
+            <div className="pkg-price"><span>One-time project</span>$7,500</div>
+            <div className="pkg-pay">$7,500 total, or 3 payments of $2,500. The project ends when the work is delivered.</div>
+            <SectionLink id="quiz" className="btn" style={solid}>Take the fit quiz →</SectionLink>
           </div>
           <div className="pkg reveal">
-            <h3>The Flagship</h3>
-            <div className="tag">Fully done for you</div>
-            <p className="pkg-who">For businesses with a lot to build who want it fully handled, end to end.</p>
-            <div className="pkg-inc">What's included · 12 months</div>
+            <h3>Grow</h3>
+            <div className="tag">Done for you · monthly</div>
+            <p className="pkg-who">For businesses that want their marketing run for them, month after month.</p>
+            <div className="pkg-inc">What's included · every month</div>
             <ul className="pkg-list">
-              <li>Everything in Full, across every area your Grid flags</li>
-              <li>Every build you need: a website integrated with portal and scheduling</li>
-              <li>We run it all: advertising, PR, community, social, and ongoing content</li>
-              <li>You just approve</li>
+              <li>2–3 areas from your Grid, run for you every month</li>
+              <li>Recurring work like social media, ads, email, or content</li>
+              <li>Monthly reporting on what's working</li>
+              <li>A monthly check-in to adjust the plan</li>
             </ul>
-            <div className="pkg-price"><span>Your price</span>$65,000</div>
-            <div className="pkg-pay">Pay in full ($65,000), quarterly (4 &times; $17,000), or monthly (12 &times; $6,000) on a 12-month agreement.</div>
-            <SectionLink id="quiz" className="btn btn-ghost" style={ghost}>See what's right for you →</SectionLink>
+            <div className="pkg-price"><span>Monthly plan</span>$1,500<em className="per"> /month</em></div>
+            <div className="pkg-pay">3-month minimum, then month to month. Often follows Build, to keep what we built growing.</div>
+            <SectionLink id="quiz" className="btn btn-ghost" style={ghost}>Take the fit quiz →</SectionLink>
           </div>
         </div>
         <p className="wwd-foot">
-          Every tier is one fixed price, and the scope is set by your Grid results. Already have a great
-          website? We put that effort toward what you actually need. Not sure where you'd land? Take the
-          sample assessment above.
+          Bigger project or a multi-location business? We'll quote it to fit after your Grid Diagnostic.
         </p>
         <div className="assure">
           <div className="assure-item">
@@ -80,14 +90,14 @@ export default function Packages() {
               <b>The Gardner Solutions Zero-Risk Commitment.</b> We don't believe you should pay for delays.
               Every project we accept receives a customized timeline based on your selected pillars. We
               guarantee to deliver 100% of the assets on your checklist within our agreed-upon timeframe, or
-              you don't pay us a dime.
+              you don't pay us a dime. The clock pauses while we're waiting on your approvals or content.
             </p>
           </div>
           <div className="assure-item">
             <span className="assure-ic">🌿</span>
             <p>
-              <b>A few clients each quarter.</b> We take on only a small number of new clients at a time, and
-              no more than three Flagship clients at once, so every engagement gets our full attention.
+              <b>A few clients each quarter.</b> We take on only a small number of new clients at a time, so
+              every engagement gets our full attention.
             </p>
           </div>
         </div>
