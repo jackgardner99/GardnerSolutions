@@ -9,7 +9,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/xppzvkey";
 const WEIGHTS = { 1: 3, 2: 4, 3: 5, 4: 4, 5: 5, 6: 3, 7: 4, 8: 5, 9: 5, 10: 3, 11: 3 };
 const PTS = { Low: 1, Medium: 3, High: 5 };
 const tierColor = { Low: "var(--low)", Medium: "var(--med)", High: "var(--high)" };
-const TIER_NAMES = ["The Foundation", "The Full Experience", "The Flagship"];
+const PRICE = { Foundation: "$2,500 one-time", Build: "$7,500 one-time", Grow: "$1,500/month" };
 
 const SUPPORT_OPTIONS = [
   { key: "DIY", label: "Give us the playbooks" },
@@ -21,18 +21,11 @@ const CAPACITY_OPTIONS = [
   { key: "thin", label: "One busy person" },
   { key: "none", label: "No one to run it" },
 ];
-const REVENUE_OPTIONS = [
-  { key: "under50", label: "Under $50k" },
-  { key: "50to250", label: "$50k–$250k" },
-  { key: "250to500", label: "$250k–$500k" },
-  { key: "over500", label: "$500k+" },
-];
 
 export default function Assessment() {
   const [answers, setAnswers] = useState(() => PILLARS.map((p) => p.state));
   const [supportPref, setSupportPref] = useState("DIY");
   const [capacity, setCapacity] = useState("canRun");
-  const [revenue, setRevenue] = useState("under50");
   const [form, setForm] = useState({ name: "", email: "", business: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | sent
   const [submittedContact, setSubmittedContact] = useState(null);
@@ -69,36 +62,51 @@ export default function Assessment() {
     });
     const weightedPct = wmax ? wsum / wmax : 0;
 
-    // The Grid gap drives what's NEEDED. 75%+ = Foundation, 50-75% = Full, under 50% = Flagship.
+    // QUIZ ONLY: suggests a likely fit. The paid Grid Diagnostic confirms the real fit.
+    // 0 = solid (75%+), 1 = some gaps (50-75%), 2 = big gaps (under 50%).
     const gapRank = weightedPct >= 0.75 ? 0 : weightedPct >= 0.5 ? 1 : 2;
+    const solid = gapRank === 0;
+    const noTeam = capacity === "none";
+    const thin = capacity === "thin";
 
-    // Support preference and thin capacity can lift the tier, but only when there's a real
-    // gap to address, and only up to Full — Flagship stays reserved for the Grid gap itself.
-    const prefRank = { DIY: 0, DWY: 1, DFY: 1 }[supportPref];
-    const capBump = capacity === "canRun" ? 0 : 1;
-    const lift = gapRank > 0 ? Math.max(prefRank, Math.min(1, gapRank + capBump)) : 0;
-    const neededRank = Math.min(2, Math.max(gapRank, lift));
-    const neededTier = TIER_NAMES[neededRank];
-
-    // Revenue caps where we'd responsibly START (healthy marketing spend runs ~7-10% of
-    // revenue), but never caps what's actually NEEDED — that's a diagnosis, not a bill.
-    const affordRank = { under50: 0, "50to250": 1, "250to500": 1, over500: 2 }[revenue];
-    const startRank = Math.min(neededRank, affordRank);
-    const grow = neededRank > startRank;
-    const startTier = TIER_NAMES[startRank];
+    let fit, then = null, why;
+    if (solid) {
+      if (supportPref === "DFY" || noTeam) {
+        fit = "Grow";
+        why = "Your foundations look solid. Since you'd rather not run it yourselves, a monthly plan to keep things growing is the likely fit.";
+      } else {
+        fit = "Foundation";
+        why = "Your foundations look solid, so a focused playbook for 2–3 areas is likely all you need.";
+      }
+    } else if (supportPref === "DIY" && !noTeam && !(thin && gapRank === 2)) {
+      fit = "Foundation";
+      why = gapRank === 2
+        ? "You'd like to run it yourselves and have the team for it. With several big gaps, start with the playbook for 2–3 areas, and upgrade to Build if you want a hand (your $2,500 is credited)."
+        : "You'd like to run it yourselves and have the team for it, so the playbook and templates for 2–3 areas fit well.";
+    } else {
+      fit = "Build";
+      if (supportPref === "DFY" || noTeam) {
+        then = "Grow";
+        why = "You have real gaps to fix and want them handled, so we'd likely build out your weakest areas first, then keep them running month to month.";
+      } else if (supportPref === "DIY") {
+        why = "You'd like to run it yourselves, but with big gaps and a stretched team, a playbook may sit on the shelf. Building the weakest areas with you is the likelier fit.";
+      } else {
+        why = "You have gaps to fix and want to build it with us, so building out your weakest areas together is the likely fit.";
+      }
+    }
 
     return {
+      source: "fit-quiz",
       averageScore: Number(avg.toFixed(2)),
       standing,
       gaps,
       weightedPct: Math.round(weightedPct * 100),
       supportPref,
       capacity,
-      revenue,
-      neededTier,
-      startTier,
-      recommendedPackage: startTier,
-      grow,
+      fit,
+      then,
+      why,
+      recommendedPackage: fit,
       breakdown,
     };
   };
@@ -146,14 +154,12 @@ export default function Assessment() {
     fd.append("business", form.business);
     fd.append("standing", computed.standing);
     fd.append("weighted_pct", `${computed.weightedPct}%`);
-    fd.append("needed_tier", computed.neededTier);
-    fd.append("start_tier", computed.startTier);
-    fd.append("grow", computed.grow ? "yes" : "no");
+    fd.append("fit", computed.fit);
+    fd.append("then", computed.then || "");
     fd.append("support_pref", supportPref);
     fd.append("capacity", capacity);
-    fd.append("revenue", revenue);
     fd.append("breakdown", computed.breakdown.map((b) => `${b.pillar}: ${b.tier}`).join("\n"));
-    fd.append("_subject", `Diagnosis result: ${computed.startTier} for ${form.name || "someone"}`);
+    fd.append("_subject", `Quiz result: ${computed.fit} for ${form.name || "someone"}`);
     return fetch(FORMSPREE_ENDPOINT, { method: "POST", headers: { Accept: "application/json" }, body: fd });
   };
 
@@ -162,15 +168,36 @@ export default function Assessment() {
       <section id="quiz" className="quiz-band">
         <div className="wrap">
           <div className="sec-head">
-            <span className="eyebrow">Sample assessment</span>
-            <h2>See which package fits you.</h2>
+            <span className="eyebrow">Quick fit quiz · free · 2 minutes</span>
+            <h2>See where you'd likely fit.</h2>
             <p>
-              This is a quick <b>sample</b>, one question per area, pre-filled so you can see how it works.
-              Change any answer to see how your grade, and the package that fits, shift. The{" "}
-              <b>full diagnosis</b> we run with you goes across all 57 sub-areas for tailored
-              recommendations, built entirely around your business.{" "}
-              <a href="#contact" style={{ color: "var(--moss)", fontWeight: 700 }}>Book your Grid Diagnostic →</a>
+              One question per pillar, pre-filled so you can see how it works. Change any answer and
+              watch the suggested package shift. <b>This quiz is not the Grid Diagnostic.</b> It's a
+              quick, rough guide to point you in the right direction.
             </p>
+          </div>
+          <div className="vs-grid">
+            <div className="vs-card">
+              <span className="vs-tag">This quiz · Free</span>
+              <h3>Quick fit quiz</h3>
+              <ul>
+                <li>{PILLARS.length} questions, one per pillar</li>
+                <li>You answer on your own in about 2 minutes</li>
+                <li>Suggests which package you'd likely fit</li>
+                <li>A starting point, not a recommendation</li>
+              </ul>
+            </div>
+            <div className="vs-card vs-paid">
+              <span className="vs-tag">The real thing · $500</span>
+              <h3>Grid Diagnostic</h3>
+              <ul>
+                <li>All 57 details across the {PILLARS.length} pillars</li>
+                <li>We sit down with you and walk through your business</li>
+                <li>A written roadmap with tailored recommendations</li>
+                <li>$500 credited in full toward any package</li>
+              </ul>
+              <a href="#contact">Book your Grid Diagnostic →</a>
+            </div>
           </div>
           <div className="qgrid">
             {PILLARS.map((p, i) => (
@@ -197,7 +224,7 @@ export default function Assessment() {
           </div>
           <div className="quiz-actions">
             <button className="btn btn-solid" onClick={() => document.getElementById("results")?.scrollIntoView()}>See my result ↓</button>
-            <span className="hint">Changing your answers will result in a different grade.</span>
+            <span className="hint">Change any answer to see your suggested fit shift.</span>
           </div>
         </div>
       </section>
@@ -205,11 +232,12 @@ export default function Assessment() {
       <section id="results">
         <div className="wrap">
           <div className="sec-head">
-            <span className="eyebrow">Your result</span>
-            <h2>Where should we send your score?</h2>
+            <span className="eyebrow">Your quiz result</span>
+            <h2>Where should we send your quiz result?</h2>
             <p>
-              Answer three quick questions, then enter your name and email to instantly view your{" "}
-              {PILLARS.length}-pillar breakdown and the fixed-price tier that fits your results.
+              Two quick questions about how you'd like to work, then enter your name and email to see
+              your {PILLARS.length}-pillar snapshot and the package you'd likely fit. Remember, this is
+              the quiz, not the Grid Diagnostic.
             </p>
           </div>
 
@@ -244,26 +272,6 @@ export default function Assessment() {
                 ))}
               </div>
             </div>
-            <div className="ctxq">
-              <label>Roughly, what does the business do in a year?</label>
-              <p className="ctx-help">
-                We use this only to recommend a package you can comfortably afford, never to charge
-                more. A healthy marketing budget is about 7–10% of revenue, so this keeps our
-                recommendation right-sized for your stage.
-              </p>
-              <div className="ctxopts">
-                {REVENUE_OPTIONS.map((o) => (
-                  <button
-                    key={o.key}
-                    type="button"
-                    className={revenue === o.key ? "on" : ""}
-                    onClick={() => setRevenue(o.key)}
-                  >
-                    {o.label}
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
 
           {status !== "sent" && (
@@ -289,28 +297,27 @@ export default function Assessment() {
           {result && (
             <div className="rgrid" style={{ marginTop: 8 }}>
               <div className="sum-card">
-                <span className="eyebrow">Your sample result</span>
-                <p className="sum-score">Weighted Grid score: <b>{result.weightedPct}%</b></p>
+                <span className="eyebrow">Your quiz result · not a diagnosis</span>
+                <p className="sum-score">Quiz score: <b>{result.weightedPct}%</b></p>
                 <div className="rec-two">
                   <div className="rec-line">
-                    <span className="rec-lab">What the Grid says you need</span>
-                    <span className="rec-val">{result.neededTier.replace("The ", "")}</span>
+                    <span className="rec-lab">You'd likely fit</span>
+                    <span className="rec-val">{result.fit}</span>
+                    <span className="rec-price">{PRICE[result.fit]}</span>
                   </div>
-                  <div className="rec-line">
-                    <span className="rec-lab">Where we'd start you</span>
-                    <span className={`rec-val${result.grow ? "" : " rec-same"}`}>
-                      {result.grow ? result.startTier.replace("The ", "") : "Same — it fits your stage"}
-                    </span>
-                  </div>
+                  {result.then && (
+                    <div className="rec-line">
+                      <span className="rec-lab">Then, to keep it growing</span>
+                      <span className="rec-val">{result.then}</span>
+                      <span className="rec-price">{PRICE[result.then]}</span>
+                    </div>
+                  )}
                 </div>
-                <p className="sum-read">
-                  {result.grow
-                    ? `A healthy marketing budget runs about 7–10% of revenue, so we'd start you at ${result.startTier.replace("The ", "")} and build toward the full plan as it pays for itself. Got the budget to invest more up front? We'll map that out together.`
-                    : "That fits comfortably within a healthy marketing budget for your stage (about 7–10% of revenue)."}{" "}
-                  This is the quick, free assessment. For a deeper dive, the Grid Diagnostic goes across all
-                  57 details with you and confirms the tier that truly fits, for $500, credited in full toward
-                  any package. A copy is on its way to{" "}
-                  {result.email}.
+                <p className="sum-read">{result.why}</p>
+                <p className="quiz-disclaimer">
+                  <b>This is a quiz, not your diagnosis.</b> It only suggests where you'd likely fit. The
+                  Grid Diagnostic ($500, credited toward any package) goes through all 57 details with
+                  you and confirms the right fit. A copy of this result is on its way to {result.email}.
                 </p>
                 <a href="#contact" className="btn" style={{ background: "var(--moss)", color: "#fff", border: "1.5px solid var(--moss)", marginTop: 12 }}>
                   Book your Grid Diagnostic →
@@ -320,7 +327,7 @@ export default function Assessment() {
                 </a>
               </div>
               <div className="sum-card">
-                <span className="eyebrow">Your {PILLARS.length}-pillar breakdown</span>
+                <span className="eyebrow">Your {PILLARS.length}-pillar snapshot</span>
                 <div className="rlist">
                   {result.breakdown.map((b) => (
                     <div className="rrow" key={b.pillar}>

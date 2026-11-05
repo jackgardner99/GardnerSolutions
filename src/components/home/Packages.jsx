@@ -85,7 +85,7 @@ export default function Packages() {
         </p>
         <div className="assure">
           <div className="assure-item">
-            <span className="assure-ic">🤝</span>
+            {/* <span className="assure-ic">🤝</span> */}
             <p>
               <b>The Gardner Solutions Zero-Risk Commitment.</b> We don't believe you should pay for delays.
               Every project we accept receives a customized timeline based on your selected pillars. We
@@ -94,7 +94,7 @@ export default function Packages() {
             </p>
           </div>
           <div className="assure-item">
-            <span className="assure-ic">🌿</span>
+            {/* <span className="assure-ic">🌿</span> */}
             <p>
               <b>A few clients each quarter.</b> We take on only a small number of new clients at a time, so
               every engagement gets our full attention.

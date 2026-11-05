@@ -31,7 +31,6 @@ const SITES = [
 const PHOTOS = [
   { img: "portfolio/photos/drum-shop-session.jpg", alt: "Live podcast taping with an audience in a drum shop", label: "Events" },
   { img: "portfolio/photos/artist-night.jpg", alt: "Singer smiling on stage with her band at an artist night", label: "Live music" },
-  { img: "portfolio/photos/headshot-window.jpg", alt: "Professional headshot by an office window", label: "Headshots" },
   { img: "portfolio/photos/tablescape.jpg", alt: "Brunch table set with coral napkins and citrus centerpieces", label: "Styled events" },
   { img: "portfolio/photos/business-dinner.jpg", alt: "Speaker addressing guests at a private business dinner", label: "Events" },
   { img: "portfolio/photos/brunch-spread.jpg", alt: "French toast and crepes on a brunch sideboard", label: "Food" },
