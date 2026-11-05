@@ -1,4 +1,5 @@
 import BrandMark from "./BrandMark.jsx";
+import { Link } from "react-router-dom";
 import SectionLink from "./SectionLink.jsx";
 
 export default function Footer() {
@@ -14,6 +15,12 @@ export default function Footer() {
           <div>
             Gardner Solutions
             <small>Let us help make your business bloom.</small>
+          </div>
+          <div className="foot-links" aria-label="Footer navigation" role="navigation">
+            <SectionLink id="whatwedo">Approach</SectionLink>
+            <Link to="/about">About</Link>
+            <SectionLink id="packages">Packages</SectionLink>
+            <a href="https://portal.gardnersolutions.co/login">Client login</a>
           </div>
         </div>
       </div>

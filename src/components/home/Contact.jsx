@@ -34,7 +34,6 @@ export default function Contact() {
           <span className="eyebrow" style={{ color: "var(--rose)" }}>Get in touch</span>
           <h2>Book your Grid Diagnostic.</h2>
           <p>We sit down with you, walk through all 57 details of the Grid across the 11 pillars, and hand you a written roadmap and the package that fits. It's <b>$500, credited in full toward any package</b>, and the roadmap is yours to keep whether or not we work together.</p>
-          <p className="guarantee"><b>Our promise:</b> the diagnosis will surface at least three specific gaps that are costing you customers, or we'll refund your $500.</p>
         </div>
         <form className="cform" ref={formRef} onSubmit={handleSubmit}>
           <div className="cfield"><label>Your name</label><input type="text" name="name" placeholder="Jane Smith" required /></div>
@@ -57,6 +56,9 @@ export default function Contact() {
             </p>
           )}
         </form>
+        <div className="guarantee-box">
+          <p className="guarantee"><b>Our promise:</b> the diagnosis will surface at least three specific gaps that are costing you customers, or we'll refund your $500.</p>
+        </div>
       </div>
     </section>
   );
