@@ -319,9 +319,7 @@ export default function PortalDemo() {
     link.rel = "stylesheet";
     link.href = FONT_HREF;
     document.head.appendChild(link);
-    const prevTitle = document.title;
-    document.title = "Sample client portal · Gardner Solutions";
-    return () => { link.remove(); document.title = prevTitle; };
+    return () => link.remove();
   }, []);
 
   useEffect(() => {

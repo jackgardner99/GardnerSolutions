@@ -7,21 +7,21 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 const SITES = [
   {
     name: "In Your Nature",
-    img: "portfolio/getinyournature.jpg",
+    img: "/portfolio/getinyournature.jpg",
     alt: "In Your Nature website",
     description: "A coaching site built around one voice and story, soft color washes, a cursive mark, and a clear path from question to booked call.",
     url: "https://getinyournature.com/",
   },
   {
     name: "Gig Gazette",
-    img: "portfolio/giggazette.jpg",
+    img: "/portfolio/giggazette.jpg",
     alt: "Gig Gazette website",
     description: "An interactive map of Nashville's live music scene, shows, open mics, and writers rounds, filterable by date, venue, and amenities.",
     url: "https://giggazette.com/",
   },
   {
     name: "The Gardners",
-    img: "portfolio/thegardnersmusic.jpg",
+    img: "/portfolio/thegardnersmusic.jpg",
     alt: "The Gardners website",
     description: "A band's home base for shows, merch, and music, built to link straight into Gig Gazette's gig listings.",
     url: "https://thegardnersmusic.com/",
@@ -29,13 +29,13 @@ const SITES = [
 ];
 
 const PHOTOS = [
-  { img: "portfolio/photos/drum-shop-session.jpg", alt: "Live podcast taping with an audience in a drum shop", label: "Events" },
-  { img: "portfolio/photos/artist-night.jpg", alt: "Singer smiling on stage with her band at an artist night", label: "Live music" },
-  { img: "portfolio/photos/tablescape.jpg", alt: "Brunch table set with coral napkins and citrus centerpieces", label: "Styled events" },
-  { img: "portfolio/photos/business-dinner.jpg", alt: "Speaker addressing guests at a private business dinner", label: "Events" },
-  { img: "portfolio/photos/brunch-spread.jpg", alt: "French toast and crepes on a brunch sideboard", label: "Food" },
-  { img: "portfolio/photos/place-setting.jpg", alt: "Place setting with a handwritten name card and grapefruit mimosas", label: "Styled events" },
-  { img: "portfolio/photos/headshot-studio.jpg", alt: "Studio headshot against a light gray wall", label: "Headshots" },
+  { img: "/portfolio/photos/drum-shop-session.jpg", alt: "Live podcast taping with an audience in a drum shop", label: "Events" },
+  { img: "/portfolio/photos/artist-night.jpg", alt: "Singer smiling on stage with her band at an artist night", label: "Live music" },
+  { img: "/portfolio/photos/tablescape.jpg", alt: "Brunch table set with coral napkins and citrus centerpieces", label: "Styled events" },
+  { img: "/portfolio/photos/business-dinner.jpg", alt: "Speaker addressing guests at a private business dinner", label: "Events" },
+  { img: "/portfolio/photos/brunch-spread.jpg", alt: "French toast and crepes on a brunch sideboard", label: "Food" },
+  { img: "/portfolio/photos/place-setting.jpg", alt: "Place setting with a handwritten name card and grapefruit mimosas", label: "Styled events" },
+  { img: "/portfolio/photos/headshot-studio.jpg", alt: "Studio headshot against a light gray wall", label: "Headshots" },
 ];
 
 function Modal({ eyebrow, title, text, wide, onClose, children }) {
@@ -128,13 +128,13 @@ export default function Portfolio() {
                 controls
                 playsInline
                 preload="metadata"
-                poster="videos/founder-story-poster.jpg"
+                poster="/videos/founder-story-poster.jpg"
                 onPlay={() => setVideoPlaying(true)}
                 onPause={() => setVideoPlaying(false)}
                 onEnded={() => setVideoPlaying(false)}
                 style={{ width: "100%", height: "100%", objectFit: "cover", background: "#000" }}
               >
-                <source src="videos/founder-story.mp4" type="video/mp4" />
+                <source src="/videos/founder-story.mp4" type="video/mp4" />
               </video>
             </div>
             <div className="pf-body">
@@ -146,7 +146,7 @@ export default function Portfolio() {
           <Link to="/portal-demo" className="pf-card reveal pf-trigger" style={{ textDecoration: "none" }}>
             <div className="pf-visual">
               <span className="pf-tag">Try the demo</span>
-              <img src="portfolio/portal-demo.jpg" alt="Sample client portal dashboard" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+              <img src="/portfolio/portal-demo.jpg" alt="Sample client portal dashboard" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
             </div>
             <div className="pf-body">
               <h3>Customer portals</h3>

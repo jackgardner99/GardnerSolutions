@@ -34,7 +34,7 @@ export default function About() {
           <div className="founders">
             <div className="founder">
               <div className="fphoto">
-                <img src="photos/KadiPhoto.jpeg" alt="Kadi" />
+                <img src="/photos/KadiPhoto.jpeg" alt="Kadi" />
               </div>
               <div>
                 <h3>Kadi</h3>
@@ -56,7 +56,7 @@ export default function About() {
             </div>
             <div className="founder">
               <div className="fphoto" style={{ background: "linear-gradient(135deg,#E4A64A,#F5DCA9)" }}>
-                <img src="photos/JackPhoto.JPG" alt="Jack" />
+                <img src="/photos/JackPhoto.JPG" alt="Jack" />
               </div>
               <div>
                 <h3>Jack</h3>
