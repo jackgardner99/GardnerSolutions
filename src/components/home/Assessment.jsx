@@ -9,7 +9,6 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/xppzvkey";
 const WEIGHTS = { 1: 3, 2: 4, 3: 5, 4: 4, 5: 5, 6: 3, 7: 4, 8: 5, 9: 5, 10: 3, 11: 3 };
 const PTS = { Low: 1, Medium: 3, High: 5 };
 const tierColor = { Low: "var(--low)", Medium: "var(--med)", High: "var(--high)" };
-const PRICE = { Foundation: "$2,500 one-time", Build: "$7,500 one-time", Grow: "$1,500/month" };
 
 const SUPPORT_OPTIONS = [
   { key: "DIY", label: "Give us the playbooks" },
@@ -81,7 +80,7 @@ export default function Assessment() {
     } else if (supportPref === "DIY" && !noTeam && !(thin && gapRank === 2)) {
       fit = "Foundation";
       why = gapRank === 2
-        ? "You'd like to run it yourselves and have the team for it. With several big gaps, start with the playbook for 2–3 areas, and upgrade to Build if you want a hand (your $2,500 is credited)."
+        ? "You'd like to run it yourselves and have the team for it. With several big gaps, start with the playbook for 2–3 areas, and upgrade to Build if you want a hand (what you've paid is credited)."
         : "You'd like to run it yourselves and have the team for it, so the playbook and templates for 2–3 areas fit well.";
     } else {
       fit = "Build";
@@ -303,13 +302,11 @@ export default function Assessment() {
                   <div className="rec-line">
                     <span className="rec-lab">You'd likely fit</span>
                     <span className="rec-val">{result.fit}</span>
-                    <span className="rec-price">{PRICE[result.fit]}</span>
                   </div>
                   {result.then && (
                     <div className="rec-line">
                       <span className="rec-lab">Then, to keep it growing</span>
                       <span className="rec-val">{result.then}</span>
-                      <span className="rec-price">{PRICE[result.then]}</span>
                     </div>
                   )}
                 </div>
