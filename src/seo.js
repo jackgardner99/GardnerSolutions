@@ -88,7 +88,7 @@ export function structuredData() {
           name: "Grow",
           priceSpecification: {
             "@type": "UnitPriceSpecification",
-            price: "1500",
+            minPrice: "300",
             priceCurrency: "USD",
             unitText: "MONTH",
           },

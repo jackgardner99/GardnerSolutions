@@ -75,8 +75,8 @@ export default function Packages() {
               <li>Monthly reporting on what's working</li>
               <li>A monthly check-in to adjust the plan</li>
             </ul>
-            <div className="pkg-price"><span>Monthly plan</span>$1,500<em className="per"> /month</em></div>
-            <div className="pkg-pay">3-month minimum, then month to month. Often follows Build, to keep what we built growing.</div>
+            <div className="pkg-price"><span>Monthly plan</span><em className="per">Starting at </em>$300<em className="per"> /month</em></div>
+            <div className="pkg-pay">Final monthly price depends on what we're supporting. 3-month minimum, then month to month. Often follows Build, to keep what we built growing.</div>
             <SectionLink id="quiz" className="btn btn-ghost" style={ghost}>Take the fit quiz →</SectionLink>
           </div>
         </div>
