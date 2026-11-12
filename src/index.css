@@ -305,6 +305,7 @@ section{padding:64px 0;}
 .foot-links a{font-size:16px; font-weight:600; color:#c7d8c4; text-decoration:none; transition:color .15s;}
 .foot-links a:hover{color:#fff;}
 @media (max-width:640px){ .foot-brand{flex-wrap:wrap;} .foot-links{margin-left:0; width:100%; margin-top:14px;} }
+.foot .foot-legal{max-width:none; margin-top:22px; font-size:12.5px; line-height:1.6; color:#a9c0a5;}
 .foot small{display:block; color:#a9c0a5; font-family:"Nunito Sans",sans-serif; font-size:13px; margin-top:6px;}
 
 /* Only hide before reveal once JS is running (html.js is set in index.html), so the

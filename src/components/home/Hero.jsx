@@ -6,7 +6,7 @@ export default function Hero() {
     <header className="hero">
       <div className="wrap hero-in">
         <div>
-          <span className="eyebrow">Engagement studio for small business</span>
+          <span className="eyebrow">Gardner Solutions · Engagement studio for small businesses</span>
           <h1>Engagement that grows the <em>right</em> customers.</h1>
           <p className="lead">
             Great engagement doesn't come from posting more. It comes from knowing why your business exists

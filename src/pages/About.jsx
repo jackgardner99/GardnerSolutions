@@ -92,7 +92,7 @@ export default function About() {
             <div className="wwd">
               <span className="wwd-n">01</span>
               <h3>We diagnose first</h3>
-              <p>Consulting grade assessment across all {PILLARS.length} areas shows exactly where you stand and where you'll grow fastest, before anyone touches a post.</p>
+              <p>Consulting grade assessment across all {PILLARS.length} pillars shows exactly where you stand and where you'll grow fastest, before anyone touches a post.</p>
             </div>
             <div className="wwd">
               <span className="wwd-n">02</span>

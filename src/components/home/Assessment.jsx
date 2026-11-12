@@ -190,7 +190,7 @@ export default function Assessment() {
               <span className="vs-tag">The real thing · $500</span>
               <h3>Grid Diagnostic</h3>
               <ul>
-                <li>All 57 details across the {PILLARS.length} pillars</li>
+                <li>All 57 sub-areas across the {PILLARS.length} pillars</li>
                 <li>We sit down with you and walk through your business</li>
                 <li>A written roadmap with tailored recommendations</li>
                 <li>$500 credited in full toward any package</li>
@@ -203,7 +203,7 @@ export default function Assessment() {
               <div className="qcard" key={p.id}>
                 <div className="qtop">
                   <span className={`pill-tag t-${p.type}`}>{p.type}</span>
-                  <span className="eyebrow" style={{ color: "var(--ink-soft)", letterSpacing: ".1em" }}>Area {p.id}</span>
+                  <span className="eyebrow" style={{ color: "var(--ink-soft)", letterSpacing: ".1em" }}>Pillar {p.id}</span>
                 </div>
                 <h3>{p.name}: <span style={{ fontWeight: 400, color: "var(--ink-soft)" }}>{p.question}</span></h3>
                 <div className="opts">
@@ -337,6 +337,7 @@ export default function Assessment() {
               </div>
             </div>
           )}
+
         </div>
       </section>
     </>

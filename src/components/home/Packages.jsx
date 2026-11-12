@@ -21,7 +21,7 @@ export default function Packages() {
             <span className="eyebrow" style={{ color: "var(--rose)" }}>Step one for everyone</span>
             <h3>The Grid Diagnostic</h3>
             <p>
-              We sit down with you, go through all 57 details across the 11 pillars, and hand you a written
+              We sit down with you, go through all 57 sub-areas across the 11 pillars, and hand you a written
               roadmap with tailored recommendations and the package that fits. The roadmap is yours to keep
               whether or not we work together.
             </p>
