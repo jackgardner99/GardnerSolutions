@@ -18,7 +18,7 @@ export default function HowItWorks() {
           <div className="step reveal">
             <span className="num">02</span>
             <h3>Get your Grid Diagnostic</h3>
-            <p>$500, credited in full toward any package. We sit down with you and go through all 57 details across the {PILLARS.length} pillars.</p>
+            <p>$500, credited in full toward any package. We sit down with you and go through all 57 sub-areas across the {PILLARS.length} pillars.</p>
           </div>
           <div className="step reveal">
             <span className="num">03</span>

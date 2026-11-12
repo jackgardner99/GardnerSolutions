@@ -16,11 +16,11 @@ export const ROUTES = {
   "/": {
     title: "Gardner Solutions | Brand, Website & Customer Engagement for Small Business",
     description:
-      "A Nashville engagement studio for small businesses. We find your story, sharpen your message, and build the websites, portals, and content that bring in the right customers. Take the free 2-minute fit quiz.",
+      "Gardner Solutions is a Nashville engagement studio for small businesses. We find your story, sharpen your message, and build the websites, portals, and content that bring in the right customers. Take the free 2-minute fit quiz.",
     sitemap: { priority: "1.0", changefreq: "monthly" },
   },
   "/about": {
-    title: "About Us | Gardner Solutions",
+    title: "About Gardner Solutions | Kadi & Jack",
     description:
       "Meet Kadi and Jack: a Big 4 strategy consultant and a full-stack developer who pair consulting rigor with real technical build to help small businesses grow the right customers.",
     sitemap: { priority: "0.8", changefreq: "monthly" },
@@ -53,8 +53,12 @@ export function structuredData() {
       "@type": "ProfessionalService",
       "@id": `${SITE.url}/#business`,
       name: SITE.name,
+      alternateName: ["Gardner Solutions Co", "Gardner Solutions Nashville", "gardnersolutions.co"],
       url: SITE.url,
       email: SITE.email,
+      // Add the business's public profiles here (Google Business Profile, LinkedIn,
+      // Instagram, ...). This is how Google ties them to the site as one brand.
+      sameAs: [],
       logo: `${SITE.url}/icon-512.png`,
       image: `${SITE.url}${SITE.ogImage}`,
       description: ROUTES["/"].description,
@@ -100,6 +104,7 @@ export function structuredData() {
       "@type": "WebSite",
       "@id": `${SITE.url}/#website`,
       name: SITE.name,
+      alternateName: "Gardner Solutions Co",
       url: SITE.url,
       publisher: { "@id": `${SITE.url}/#business` },
     },

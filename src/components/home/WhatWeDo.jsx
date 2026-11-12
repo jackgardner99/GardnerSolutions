@@ -15,7 +15,7 @@ export default function WhatWeDo() {
         <div className="wwd-grid cols-5">
           <div className="wwd reveal">
             <h3>Diagnosis &amp; Strategy</h3>
-            <p>A clear read on where your business stands across all {PILLARS.length} areas of engagement, with tailored recommendations and a roadmap to your goals.</p>
+            <p>A clear read on where your business stands across all {PILLARS.length} pillars of engagement, with tailored recommendations and a roadmap to your goals.</p>
           </div>
           <div className="wwd reveal">
             <h3>Brand &amp; Story</h3>

@@ -33,7 +33,7 @@ export default function Contact() {
         <div className="sec-head">
           <span className="eyebrow" style={{ color: "var(--rose)" }}>Get in touch</span>
           <h2>Book your Grid Diagnostic.</h2>
-          <p>We sit down with you, walk through all 57 details of the Grid across the 11 pillars, and hand you a written roadmap and the package that fits. It's <b>$500, credited in full toward any package</b>, and the roadmap is yours to keep whether or not we work together.</p>
+          <p>We sit down with you, walk through all 57 sub-areas of the Grid across the 11 pillars, and hand you a written roadmap and the package that fits. It's <b>$500, credited in full toward any package</b>, and the roadmap is yours to keep whether or not we work together.</p>
         </div>
         <form className="cform" ref={formRef} onSubmit={handleSubmit}>
           <div className="cfield"><label>Your name</label><input type="text" name="name" placeholder="Jane Smith" required /></div>

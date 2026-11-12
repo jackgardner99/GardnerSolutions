@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="wrap">
         <span className="eyebrow" style={{ color: "var(--rose-soft)" }}>Ready when you are</span>
         <h2>Let's grow the right way.</h2>
-        <p>Start with our free assessment to see where you stand. For a deeper dive, the Grid Diagnostic walks all 57 details with you for $500, credited in full toward any package.</p>
+        <p>Start with our free assessment to see where you stand. For a deeper dive, the Grid Diagnostic walks all 57 sub-areas with you for $500, credited in full toward any package.</p>
         <SectionLink id="contact" className="btn btn-solid">Book your Grid Diagnostic</SectionLink>
         <div className="foot-brand">
           <BrandMark size={26} leaf="#9cc0a0" leaf2="#ffffff" />
@@ -23,6 +23,13 @@ export default function Footer() {
             <a href="https://portal.gardnersolutions.co/login">Client login</a>
           </div>
         </div>
+        <p className="foot-legal">
+          Gardner Solutions provides brand strategy, marketing, and technology services intended to
+          support your own business decisions. It is not a substitute for licensed legal, financial,
+          tax, or accounting advice. Our recommendations, including quiz results and Grid Diagnostic
+          roadmaps, are shared from professional and client experience, not as a guarantee of specific
+          business results, revenue, or search rankings.
+        </p>
       </div>
     </footer>
   );
