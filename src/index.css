@@ -436,3 +436,15 @@ html.js .reveal:not(.in){opacity:0; transform:translateY(14px);}
   .pf-grid{grid-template-columns:1fr;}
 }
 @media (max-width:560px){ .stat-cards{grid-template-columns:1fr;} }
+
+/* ---------- privacy policy / terms ---------- */
+/* Full-width .wrap so text lines up with the page heading; only line length is capped. */
+.legal{padding-top:24px; padding-bottom:72px; font-size:16.5px; line-height:1.7; color:var(--ink-soft);}
+.legal > *{max-width:760px;}
+.legal h2{margin:40px 0 10px; font-size:24px; color:var(--moss);}
+.legal h3{margin:24px 0 8px; font-size:18px; color:var(--moss);}
+.legal p{margin:0 0 14px;}
+.legal ul{margin:0 0 16px; padding-left:22px;}
+.legal li{margin-bottom:8px;}
+.legal a{color:var(--moss); text-decoration:underline; text-underline-offset:2px;}
+.legal strong{color:var(--ink, inherit);}

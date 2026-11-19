@@ -21,6 +21,8 @@ export default function Footer() {
             <Link to="/about">About</Link>
             <SectionLink id="packages">Packages</SectionLink>
             <a href="https://portal.gardnersolutions.co/login">Client login</a>
+            <Link to="/privacy">Privacy</Link>
+            <Link to="/terms">Terms</Link>
           </div>
         </div>
         <p className="foot-legal">
