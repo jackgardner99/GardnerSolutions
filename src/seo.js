@@ -32,6 +32,18 @@ export const ROUTES = {
     // Demo with placeholder data: reachable from the site, but kept out of search results.
     noindex: true,
   },
+  // Linked from Google's sign-in screen for the client portal, so these must stay at these URLs.
+  "/privacy": {
+    title: "Privacy Policy | Gardner Solutions",
+    description:
+      "What Gardner Solutions collects through gardnersolutions.co and the client portal, how it's used, and how Google Calendar data is handled.",
+    sitemap: { priority: "0.3", changefreq: "yearly" },
+  },
+  "/terms": {
+    title: "Terms of Service | Gardner Solutions",
+    description: "The terms for using gardnersolutions.co and the Gardner Solutions client portal.",
+    sitemap: { priority: "0.3", changefreq: "yearly" },
+  },
 };
 
 export const NOT_FOUND = {
